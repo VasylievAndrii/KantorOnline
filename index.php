@@ -58,7 +58,7 @@
 					</div>
 					<div class="main__cryptocurrency-footer">
 						<?php
-							echo "<p class='main__cryptocurrency-price'>$" . $lastRow['BTC'] . "</p>"
+							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--BTC'></p>"
 						?>
 						<span class="triangle triangle--BTC"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--BTC"></p>
@@ -73,7 +73,7 @@
 					</div>
 					<div class="main__cryptocurrency-footer">
 						<?php
-							echo "<p class='main__cryptocurrency-price'>$" . $lastRow['ETH'] . "</p>"
+							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--ETH'></p>"
 						?>
 						<span class="triangle triangle--ETH"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--ETH"></p>
@@ -88,7 +88,7 @@
 					</div>
 					<div class="main__cryptocurrency-footer">
 						<?php
-							echo "<p class='main__cryptocurrency-price'>$" . $lastRow['LTC'] . "</p>"
+							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--LTC'></p>"
 						?>
 						<span class="triangle triangle--LTC"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--LTC"></p>
@@ -103,7 +103,7 @@
 					</div>
 					<div class="main__cryptocurrency-footer">
 						<?php
-							echo "<p class='main__cryptocurrency-price'>$" . $lastRow['XRP'] . "</p>"
+							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--XRP'></p>"
 						?>
 						<span class="triangle triangle--XRP"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--XRP"></p>
@@ -118,7 +118,7 @@
 					</div>
 					<div class="main__cryptocurrency-footer">
 						<?php
-							echo "<p class='main__cryptocurrency-price'>$" . $lastRow['BCH'] . "</p>"
+							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--BCH'></p>"
 						?>
 						<span class="triangle triangle--BCH"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--BCH"></p>
