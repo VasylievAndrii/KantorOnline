@@ -1,17 +1,22 @@
 <?php
   include('database.php');
 
-	$request = mysqli_query($conn, 'SELECT * FROM kursy_fiat ORDER BY data DESC, czas DESC LIMIT 33');
-	$kursy_fiat = mysqli_fetch_all($request, MYSQLI_ASSOC);
+	$request_fiat = mysqli_query($conn, 'SELECT * FROM kursy_fiat ORDER BY data DESC, czas DESC LIMIT 33');
+	$kursy_fiat = mysqli_fetch_all($request_fiat, MYSQLI_ASSOC);
 
-  $request = mysqli_query($conn, 'SELECT * FROM kursy_krypto ORDER BY data DESC, czas DESC LIMIT 10');
-  $kursy_krypto = mysqli_fetch_all($request, MYSQLI_ASSOC);
+  $request_krypto = mysqli_query($conn, 'SELECT * FROM kursy_krypto ORDER BY data DESC, czas DESC LIMIT 10');
+  $kursy_krypto = mysqli_fetch_all($request_krypto, MYSQLI_ASSOC);
 
-  echo "<script>
-          var kursy = {fiat: " . json_encode($kursy_fiat) . ",
-                      krypto: " . json_encode($kursy_krypto) . "};
-        </script>";
+  header('Content-Type: application/json');
 
-  mysqli_free_result($request);
+  $kursy = [
+      'fiat' => $kursy_fiat,
+      'krypto' => $kursy_krypto
+  ];
+
+  echo json_encode($kursy);
+
+  mysqli_free_result($request_fiat);
+  mysqli_free_result($request_krypto);
   mysqli_close($conn);
 ?>

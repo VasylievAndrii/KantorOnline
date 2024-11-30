@@ -1,7 +1,3 @@
-<?php
-  include('fetch_data.php'); 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -57,9 +53,7 @@
 						<p class="main__cryptocurrency-subname">BTC</p>
 					</div>
 					<div class="main__cryptocurrency-footer">
-						<?php
-							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--BTC'></p>"
-						?>
+						<p class='main__cryptocurrency-price main__cryptocurrency-price--BTC'></p>
 						<span class="triangle triangle--BTC"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--BTC"></p>
 					</div>
@@ -72,9 +66,7 @@
 						<p class="main__cryptocurrency-subname">ETH</p>
 					</div>
 					<div class="main__cryptocurrency-footer">
-						<?php
-							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--ETH'></p>"
-						?>
+						<p class='main__cryptocurrency-price main__cryptocurrency-price--ETH'></p>
 						<span class="triangle triangle--ETH"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--ETH"></p>
 					</div>
@@ -87,9 +79,7 @@
 						<p class="main__cryptocurrency-subname">LTC</p>
 					</div>
 					<div class="main__cryptocurrency-footer">
-						<?php
-							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--LTC'></p>"
-						?>
+						<p class='main__cryptocurrency-price main__cryptocurrency-price--LTC'></p>
 						<span class="triangle triangle--LTC"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--LTC"></p>
 					</div>
@@ -102,9 +92,7 @@
 						<p class="main__cryptocurrency-subname">XRP</p>
 					</div>
 					<div class="main__cryptocurrency-footer">
-						<?php
-							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--XRP'></p>"
-						?>
+						<p class='main__cryptocurrency-price main__cryptocurrency-price--XRP'></p>
 						<span class="triangle triangle--XRP"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--XRP"></p>
 					</div>
@@ -117,9 +105,7 @@
 						<p class="main__cryptocurrency-subname">BCH</p>
 					</div>
 					<div class="main__cryptocurrency-footer">
-						<?php
-							echo "<p class='main__cryptocurrency-price main__cryptocurrency-price--BCH'></p>"
-						?>
+						<p class='main__cryptocurrency-price main__cryptocurrency-price--BCH'></p>
 						<span class="triangle triangle--BCH"></span>
 						<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--BCH"></p>
 					</div>

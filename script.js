@@ -16,23 +16,6 @@ navItemEls.forEach(navItemEl => {
 });
 
 // main page - cryptocurrency
-var kursyFiat = kursy.fiat;
-var kursyKrypto = kursy.krypto;
-
-document.addEventListener("DOMContentLoaded", function () {
-	const usdToPlnRate = kursy.fiat.find(currency => currency.code === "USD").rate;
-
-	kursy.krypto.forEach(function (crypto) {
-		const rateInPln = parseFloat(crypto.rate) * usdToPlnRate;
-
-		const priceElement = document.querySelector(`.main__cryptocurrency-price--${crypto.code}`);
-
-		if (priceElement) {
-			priceElement.innerText = `${rateInPln.toFixed(2)} PLN`;
-		}
-	});
-});
-
 function updateCryptocurrencyChanges(kursyKrypto) {
 	const grouped = kursyKrypto.reduce((acc, item) => {
 		if (!acc[item.code]) {
@@ -83,4 +66,26 @@ function updateCryptocurrencyChanges(kursyKrypto) {
 	});
 }
 
-updateCryptocurrencyChanges(kursyKrypto);
+function processCryptocurrencyData(kursy) {
+	const kursyFiat = kursy.fiat;
+	const kursyKrypto = kursy.krypto;
+
+	const usdToPlnRate = kursyFiat.find(currency => currency.code === "USD").rate;
+
+	kursyKrypto.forEach(function (crypto) {
+		const rateInPln = parseFloat(crypto.rate) * usdToPlnRate;
+		const priceElement = document.querySelector(`.main__cryptocurrency-price--${crypto.code}`);
+
+		if (priceElement) {
+			priceElement.innerText = `${rateInPln.toFixed(2)} PLN`;
+		}
+	});
+
+	updateCryptocurrencyChanges(kursyKrypto);
+}
+
+fetch("fetch_data.php")
+	.then(response => response.json())
+	.then(data => {
+		processCryptocurrencyData(data);
+	});
