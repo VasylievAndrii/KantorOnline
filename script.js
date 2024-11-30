@@ -15,7 +15,37 @@ navItemEls.forEach(navItemEl => {
 	});
 });
 
-// main page - cryptocurrency
+// main - cryptocurrency-content-page
+const containerCryptocurrency = document.querySelector(".main__cryptocurrency-content-page");
+const cryptocurrencies = [
+	{ name: "Bitcoin", code: "BTC", logo: "bitcoin-logo.png" },
+	{ name: "Ethereum", code: "ETH", logo: "ethereum-logo.png" },
+	{ name: "Litecoin", code: "LTC", logo: "litecoin-logo.png" },
+	{ name: "XRP", code: "XRP", logo: "xrp-logo.png" },
+	{ name: "Bitcoin cash", code: "BCH", logo: "bitcoin-cash-logo.png" },
+];
+
+function generateCryptocurrencyHTML(crypto) {
+	return `
+		<div class="main__cryptocurrency">
+			<div class="main__cryptocurrency-header">
+				<img src="images/${crypto.logo}" alt="${crypto.name} logo" class="main__cryptocurrency-logo">
+				<p class="main__cryptocurrency-name">${crypto.name}</p>
+				<p class="main__cryptocurrency-subname">${crypto.code}</p>
+			</div>
+			<div class="main__cryptocurrency-footer">
+				<p class="main__cryptocurrency-price main__cryptocurrency-price--${crypto.code}"></p>
+				<span class="triangle triangle--${crypto.code}"></span>
+				<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--${crypto.code}"></p>
+			</div>
+		</div>
+	`;
+}
+
+cryptocurrencies.forEach(crypto => {
+	containerCryptocurrency.innerHTML += generateCryptocurrencyHTML(crypto);
+});
+
 function updateCryptocurrencyChanges(kursyKrypto) {
 	const grouped = kursyKrypto.reduce((acc, item) => {
 		if (!acc[item.code]) {
