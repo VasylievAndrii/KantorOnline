@@ -1,0 +1,111 @@
+/* alert styles */
+.alert {
+	margin-bottom: 10px;
+}
+
+.alert-text {
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+
+.danger {
+	background-color: #f8d7da;
+	color: #721c24;
+}
+
+.success {
+	background-color: #d4edda;
+	color: #155724;
+}
+
+/* main registration form */
+.main__auth-form-page {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	padding: 40px;
+	max-width: 500px;
+	margin: 25px auto;
+}
+
+.main__heading--auth {
+	font-family: "Roboto", sans-serif;
+	font-size: 2.5em;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.main__auth-form-group {
+	margin-bottom: 20px;
+}
+
+.main__auth-label {
+	font-size: 1.1em;
+	font-weight: 500;
+	margin-bottom: 8px;
+	display: block;
+}
+
+.main__auth-input {
+	width: 100%;
+	padding: 12px;
+	font-size: 1em;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	transition: border-color 0.3s ease-in-out;
+}
+
+.main__auth-input:focus {
+	border-color: #0056b3;
+	outline: none;
+}
+
+.main__auth-btn {
+	background-color: #0056b3;
+	color: white;
+	padding: 14px 30px;
+	font-size: 1.1em;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	width: 100%;
+	transition: background-color 0.3s ease;
+}
+
+.main__auth-btn:hover {
+	background-color: #004085;
+}
+
+.main__auth-suggest {
+	margin-top: 15px;
+}
+
+.main__auth-suggest-link {
+	color: rgba(55, 103, 222, 0.75);
+}
+
+.main__auth-suggest-link:hover,
+.main__auth-suggest-link:focus {
+	color: rgba(55, 103, 222, 1);
+	transition: all 0.4s;
+}
+
+.main__registration-criteria {
+	font-size: 10px;
+	color: #555;
+}
+
+@media (max-width: 600px) {
+	.main__registration-form-page {
+		padding: 20px;
+		width: 90%;
+	}
+	.main__heading--registration {
+		font-size: 2em;
+	}
+	.main__registration-btn {
+		padding: 12px 25px;
+	}
+}

@@ -4,18 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Kantor Online</title>
-		<link rel="stylesheet" href="styles.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-			rel="stylesheet"
-		/>
+		<link rel="stylesheet" href="styles/styles.css" />
 	</head>
 	<body>
 		<header class="header">
 			<div class="header__content">
-				<a href="#" class="logo">Kantor Online</a>
+				<a href="index.php" class="logo">Kantor Online</a>
 
 				<nav class="nav">
 					<ul class="nav__list">
@@ -29,10 +23,10 @@
 							<a href="#" class="nav__link">Kontakt</a>
 						</li>
 						<li class="nav__item">
-							<a href="#" class="nav__link nav__link--login">Rejestracja</a>
+							<a href="registration.php" class="nav__link nav__link--login">Rejestracja</a>
 						</li>
 						<li class="nav__item">
-							<a href="#" class="nav__link nav__link--login">logowanie</a>
+							<a href="login.php" class="nav__link nav__link--login">Logowanie</a>
 						</li>
 					</ul>
 				</nav>
@@ -56,6 +50,6 @@
 			</div>
 		</footer>
 
-		<script src="script.js"></script>
+		<script src="js/script.js"></script>
 	</body>
 </html>
