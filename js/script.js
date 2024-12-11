@@ -114,7 +114,7 @@ function processCryptocurrencyData(kursy) {
 	updateCryptocurrencyChanges(kursyKrypto);
 }
 
-fetch("../databases/fetch_data.php")
+fetch("./databases/fetch_data.php")
 	.then(response => response.json())
 	.then(data => {
 		processCryptocurrencyData(data);
