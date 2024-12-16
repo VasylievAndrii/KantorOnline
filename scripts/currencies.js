@@ -35,6 +35,11 @@ const currencyNames = {
 	COP: "Peso kolumbijskie",
 	VND: "Dong wietnamski",
 	PKR: "Rupia pakistańska",
+	BGN: "Lew bułgarski",
+	PHP: "Peso filipińskie",
+	RON: "Lej rumuński",
+	ISK: "Korona islandzka",
+	UAH: "Hrywna ukraińska",
 };
 
 fetch("./databases/fetch_data.php")
@@ -45,7 +50,7 @@ fetch("./databases/fetch_data.php")
 		const kursyFiatTable = createHtmlTable(latestRatesWithTrends);
 		document.getElementById("kursyFiatTable").innerHTML = kursyFiatTable;
 	})
-	.catch(error => console.error("Error fetching data:", error));
+	.catch(error => console.error("Błąd podczas pobierania danych:", error));
 
 function getLatestRatesWithTrends(data) {
 	const latest = {};
@@ -56,11 +61,11 @@ function getLatestRatesWithTrends(data) {
 
 		if (!latest[code]) {
 			latest[code] = row;
-			latest[code].trend = "нет данных";
+			latest[code].trend = "brak danych";
 		} else {
 			const previousRate = parseFloat(latest[code].rate);
 			const trend =
-				currentRate > previousRate ? "рост" : currentRate < previousRate ? "спад" : "без изменений";
+				currentRate > previousRate ? "wzrost" : currentRate < previousRate ? "spadek" : "bez zmian";
 
 			latest[code] = row;
 			latest[code].trend = trend;
@@ -72,7 +77,7 @@ function getLatestRatesWithTrends(data) {
 
 function createHtmlTable(data) {
 	if (!data || data.length === 0) {
-		return "<p>Данные отсутствуют</p>";
+		return "<p>Brak dostępnych danych</p>";
 	}
 
 	let table = "<table border='1'><thead><tr>";
@@ -86,12 +91,12 @@ function createHtmlTable(data) {
 	data.forEach(row => {
 		const rate = parseFloat(row.rate);
 		const trendClass = row.trend;
-		const fullName = currencyNames[row.code] || "Unknown Currency";
+		const fullName = currencyNames[row.code] || "Nieznana waluta";
 
 		let arrow = "";
-		if (trendClass === "рост") {
+		if (trendClass === "wzrost") {
 			arrow = '<i class="fa-solid fa-arrow-up" style="color: green;"></i>';
-		} else if (trendClass === "спад") {
+		} else if (trendClass === "spadek") {
 			arrow = '<i class="fa-solid fa-arrow-down" style="color: red;"></i>';
 		} else {
 			arrow = '<i class="fa-solid fa-equals"></i>';
