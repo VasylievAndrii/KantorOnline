@@ -34,8 +34,9 @@
 	height: 20px;
 }
 
-/* .main__cryptocurrency-name {
-} */
+.main__cryptocurrency-name {
+	font-weight: bold;
+}
 
 .main__cryptocurrency-subname {
 	color: #979797;
