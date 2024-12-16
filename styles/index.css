@@ -1,0 +1,13 @@
+.main__showcase {
+	display: flex;
+	justify-content: space-evenly;
+	/* gap: 20px; */
+}
+
+.main__showcase-page {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	padding: 40px;
+	width: 450px;
+}

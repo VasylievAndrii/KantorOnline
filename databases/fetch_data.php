@@ -1,7 +1,7 @@
 <?php
   include('kryptowaluty.php');
 
-	$request_fiat = mysqli_query($conn, 'SELECT * FROM kursy_fiat ORDER BY data DESC, czas DESC LIMIT 33');
+	$request_fiat = mysqli_query($conn, 'SELECT * FROM kursy_fiat ORDER BY data DESC, czas DESC LIMIT 66');
 	$kursy_fiat = mysqli_fetch_all($request_fiat, MYSQLI_ASSOC);
 
   $request_krypto = mysqli_query($conn, 'SELECT * FROM kursy_krypto ORDER BY data DESC, czas DESC LIMIT 10');

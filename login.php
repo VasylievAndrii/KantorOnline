@@ -8,43 +8,12 @@
     <link rel="stylesheet" href="styles/auth.css" />
   </head>
   <body>
-    <?php session_start(); ?>
-    <header class="header">
-      <div class="header__content">
-        <a href="index.php" class="logo">Kantor Online</a>
-        <nav class="nav">
-          <ul class="nav__list">
-            <li class="nav__item"><a href="#" class="nav__link">Notowanie</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">O nas</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">Kontakt</a></li>
-            <?php if(isset($_SESSION['user_id'])): ?>
-							<li class="nav__item">
-								<!-- <a href="logout.php" class="nav__link nav__link--login">?php echo htmlspecialchars($_SESSION['username']); ?></a> -->
-								<a href="logout.php" class="nav__link nav__link--login logout-btn">Wyloguj się</a>
-							</li>
-						<?php else: ?>
-							<li class="nav__item">
-								<a href="registration.php" class="nav__link nav__link--login">Rejestracja</a>
-							</li>
-							<li class="nav__item">
-								<a href="login.php" class="nav__link nav__link--login">Logowanie</a>
-							</li>
-						<?php endif; ?>
-          </ul>
-        </nav>
-        <div class="hamburger">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-      </div>
-    </header>
+    <?php include('samples/header.php'); ?>
 
     <main class="main">
       <div class="main__auth-form-page">
         <h1 class="main__heading main__heading--auth">Logowanie</h1>
         <?php
-          session_start();
           require_once "databases/auth_db.php";
 
           if (isset($_POST["submit"])) {
@@ -104,10 +73,7 @@
       </div>
     </main>
 
-    <footer class="footer">
-      <div class="footer__content">
-        <p class="footer__created_by">Kamil Gręda, Tomasz Tapa, Andrii Vasyliev &copy; 2024</p>
-      </div>
-    </footer>
+    <?php include('samples/footer.php'); ?>
+    <script src="scripts/script.js"></script>
   </body>
 </html>

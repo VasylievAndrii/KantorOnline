@@ -3,24 +3,21 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kantor Online</title>
+		<title>Kryptowaluty</title>
 		<link rel="stylesheet" href="styles/styles.css" />
-		<link rel="stylesheet" href="styles/index.css" />
+		<link rel="stylesheet" href="styles/cryptocurrencies.css" />
 	</head>
 	<body>
 		<?php include('samples/header.php'); ?>
 		
-		<main class="main main__showcase">
-			<div class="main__showcase-page">
-				<h1 class="main__heading">Kryptowaluty</h1>
-			</div>
-			<div class="main__showcase-page">
-				<h1 class="main__heading">Waluty</h1>
-			</div>
+		<main class="main">
+      <h1 class="main__heading">Kryptowaluty</h1>
+      <div class="main__cryptocurrency-content-page"></div>	 
     </main>
 
 		<?php include('samples/footer.php'); ?>
 
 		<script src="scripts/script.js"></script>
+		<script src="scripts/cryptocurrencies.js"></script>
 	</body>
 </html>
