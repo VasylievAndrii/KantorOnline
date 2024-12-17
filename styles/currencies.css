@@ -8,6 +8,7 @@ th,
 td {
 	padding: 12px 15px;
 	text-align: center;
+	font-size: 23px;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -22,4 +23,13 @@ tr:hover {
 
 td {
 	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline;
 }

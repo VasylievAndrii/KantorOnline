@@ -40,6 +40,7 @@ const currencyNames = {
 	RON: "Lej rumuński",
 	ISK: "Korona islandzka",
 	UAH: "Hrywna ukraińska",
+	XDR: "Specjalne Prawa Ciągnienia",
 };
 
 fetch("./databases/fetch_data.php")
@@ -95,20 +96,23 @@ function createHtmlTable(data) {
 
 		let arrow = "";
 		if (trendClass === "wzrost") {
-			arrow = '<i class="fa-solid fa-arrow-up" style="color: green;"></i>';
+			arrow = '<i class="fa-solid fa-arrow-up" style="color: #6FA000;"></i>';
 		} else if (trendClass === "spadek") {
-			arrow = '<i class="fa-solid fa-arrow-down" style="color: red;"></i>';
+			arrow = '<i class="fa-solid fa-arrow-down" style="color: #FF3B30;"></i>';
 		} else {
 			arrow = '<i class="fa-solid fa-equals"></i>';
 		}
 
+		const detailsLink = `currencyInfo.php?code=${row.code}`;
+
 		table += "<tr>";
-		table += `<td><img src="https://flagcdn.com/24x18/${row.code
-			.slice(0, 2)
-			.toLowerCase()}.png" alt="${row.code}" /> <b>${
-			row.code
-		}</b> PLN <img src="https://flagcdn.com/24x18/pl.png" alt="PLN" /></td>`;
-		table += `<td>${fullName}</td>`;
+		table += `<td>
+					<a href="${detailsLink}">
+						<img src="https://flagcdn.com/24x18/${row.code.slice(0, 2).toLowerCase()}.png" alt="${row.code}" />
+						<b>${row.code}</b>
+					PLN <img src="https://flagcdn.com/24x18/pl.png" alt="PLN" /></a>
+					</td>`;
+		table += `<td><a href="${detailsLink}">${fullName}</a></td>`;
 		table += `<td class="${trendClass}"><b>${rate.toFixed(4)}</b> ${arrow}</td>`;
 		table += `<td><b>${(rate * 1.1).toFixed(4)}</b></td>`;
 		table += "</tr>";
