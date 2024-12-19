@@ -69,6 +69,8 @@ fetch("./databases/fetch_data.php")
 		const currencyDetail = currencyDetails[currencyCode];
 
 		if (currencyData && currencyDetail) {
+			document.title = `Kurs ${currencyDetail.name}`;
+
 			const rate = parseFloat(currencyData.rate);
 			const sellRate = (rate * 1.1).toFixed(4);
 

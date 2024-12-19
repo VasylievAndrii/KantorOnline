@@ -10,18 +10,20 @@ const cryptocurrencies = [
 
 function generateCryptocurrencyHTML(crypto) {
 	return `
-		<div class="main__cryptocurrency">
-			<div class="main__cryptocurrency-header">
-				<img src="images/${crypto.logo}" alt="${crypto.name} logo" class="main__cryptocurrency-logo">
-				<p class="main__cryptocurrency-name">${crypto.name}</p>
-				<p class="main__cryptocurrency-subname">${crypto.code}</p>
+		<a href="cryptocurrencyInfo.php?code=${crypto.code}" class="main__cryptocurrency-link">
+			<div class="main__cryptocurrency">
+				<div class="main__cryptocurrency-header">
+						<img src="images/${crypto.logo}" alt="${crypto.name} logo" class="main__cryptocurrency-logo">
+						<p class="main__cryptocurrency-name">${crypto.name}</p>
+						<p class="main__cryptocurrency-subname">${crypto.code}</p>
+				</div>
+				<div class="main__cryptocurrency-footer">
+					<p class="main__cryptocurrency-price main__cryptocurrency-price--${crypto.code}"></p>
+					<span class="triangle triangle--${crypto.code}"></span>
+					<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--${crypto.code}"></p>
+				</div>
 			</div>
-			<div class="main__cryptocurrency-footer">
-				<p class="main__cryptocurrency-price main__cryptocurrency-price--${crypto.code}"></p>
-				<span class="triangle triangle--${crypto.code}"></span>
-				<p class="main__cryptocurrency-percentage-change main__cryptocurrency-percentage-change--${crypto.code}"></p>
-			</div>
-		</div>
+		</a>	
 	`;
 }
 
