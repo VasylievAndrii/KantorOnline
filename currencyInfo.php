@@ -12,14 +12,14 @@
   <?php include('samples/header.php'); ?>
 
   <main class="main">
-  <div class="container">
-        <h1 id="currency-name"></h1>
-        <img id="currency-flag" alt="Flaga waluty">
-        <p><b>Kod waluty:</b> <span id="currency-code"></span></p>
-        <p><b>Aktualny kurs kupna:</b> <span id="currency-rate"></span> PLN</p>
-        <p><b>Kurs sprzedaży:</b> <span id="currency-sell-rate"></span> PLN</p>
-        <p><b>Opis:</b> <span id="currency-description"></span></p>
-        <a href="currencies.php">Wróć do strony walut</a>
+    <div class="container">
+      <h1 id="currency-name"></h1>
+      <img id="currency-flag" alt="Flaga waluty">
+      <p><b>Kod waluty:</b> <span id="currency-code"></span></p>
+      <p><b>Aktualny kurs kupna:</b> <span id="currency-rate"></span> PLN</p>
+      <p><b>Kurs sprzedaży:</b> <span id="currency-sell-rate"></span> PLN</p>
+      <p><b>Opis:</b> <span id="currency-description"></span></p>
+      <a href="currencies.php">Wróć do strony walut</a>
     </div>
   </main>
   <?php include('samples/footer.php'); ?>

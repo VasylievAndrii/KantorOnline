@@ -8,8 +8,16 @@
 						<li class="nav__item"><a href="currencies.php" class="nav__link">Waluty</a></li>
 						<?php if(isset($_SESSION['user_id'])): ?>
 							<li class="nav__item">
-								<!-- <a href="logout.php" class="nav__link nav__link--login">?php echo htmlspecialchars($_SESSION['username']); ?></a> -->
-								<a href="logout.php" class="nav__link nav__link--login logout-btn">Wyloguj się</a>
+								<div class="user-menu">
+									<a href="#" class="nav__link nav__link--login logout-btn" onclick="toggleMenu(event)">
+										<?php echo htmlspecialchars($_SESSION['username']) . " (" . number_format($balance, 2) . "PLN)"; ?>
+									</a>
+									<div class="dropdown-menu" id="userDropdown">
+											<a href="#" class="dropdown-item">Funkcja 1</a>
+											<a href="#" class="dropdown-item">Funkcja 2</a>
+											<a href="logout.php" class="dropdown-item">Wyloguj się</a>
+									</div>
+							</div>
 							</li>
 						<?php else: ?>
 							<li class="nav__item">

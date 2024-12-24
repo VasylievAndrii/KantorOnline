@@ -14,3 +14,17 @@ navItemEls.forEach(navItemEl => {
 		hamburgerEl.classList.remove("hamburger--open");
 	});
 });
+
+// header - user menu
+function toggleMenu(event) {
+	event.preventDefault();
+	const dropdown = document.getElementById("userDropdown");
+	dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.addEventListener("click", function (e) {
+	const dropdown = document.getElementById("userDropdown");
+	if (!e.target.closest(".user-menu")) {
+		dropdown.style.display = "none";
+	}
+});

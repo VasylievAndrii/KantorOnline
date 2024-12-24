@@ -67,17 +67,24 @@
 							}
 							echo '</div>';
 						} else {
-							$stmt = mysqli_prepare($conn, "INSERT INTO users (login, email, password) VALUES (?, ?, ?)");
+							$stmt = mysqli_prepare($conn, "INSERT INTO users (login, email, password, balance) VALUES (?, ?, ?, ?)");
 							if ($stmt) {
-								mysqli_stmt_bind_param($stmt, "sss", $login, $email, $passwordHash);
-								if (mysqli_stmt_execute($stmt)) {
-									echo "<div class='alert'><p class='alert-text success'>Rejestracja zakończona sukcesem!</p></div>";
-								} else {
-									echo "<div class='alert'><p class='alert-text danger'>Wystąpił błąd podczas rejestracji</p></div>";
-								}
-								mysqli_stmt_close($stmt);
+									$initialBalance = 0;
+									mysqli_stmt_bind_param($stmt, "sssd", $login, $email, $passwordHash, $initialBalance);
+									if (mysqli_stmt_execute($stmt)) {
+											echo "<div class='alert'>
+															<p class='alert-text success'>Rejestracja zakończona sukcesem!</p>
+														</div>";
+									} else {
+											echo "<div class='alert'>
+															<p class='alert-text danger'>Wystąpił błąd podczas rejestracji</p>
+														</div>";
+									}
+									mysqli_stmt_close($stmt);
 							} else {
-								echo "<div class='alert'<p class='alert-text danger'>Błąd przygotowania zapytania</p></div>";
+									echo "<div class='alert'>
+													<p class='alert-text danger'>Błąd przygotowania zapytania</p>
+												</div>";
 							}
 						}
 
