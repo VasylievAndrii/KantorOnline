@@ -10,7 +10,7 @@
 	<body>
 		<?php include('samples/header.php'); ?>
 		
-		<main class="main">
+		<main class="main main--cryptocurrency_page">
       <h1 class="main__heading">Kryptowaluty</h1>
       <div class="main__cryptocurrency-content-page"></div>	 
     </main>

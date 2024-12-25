@@ -23,6 +23,11 @@ function toggleMenu(event) {
 }
 
 window.addEventListener("click", function (e) {
+	const isAuthenticated = document.body.dataset.authenticated === "true";
+	if (!isAuthenticated) {
+		return;
+	}
+
 	const dropdown = document.getElementById("userDropdown");
 	if (!e.target.closest(".user-menu")) {
 		dropdown.style.display = "none";

@@ -114,7 +114,7 @@ function createHtmlTable(data) {
 					</td>`;
 		table += `<td><a href="${detailsLink}">${fullName}</a></td>`;
 		table += `<td class="${trendClass}"><b>${rate.toFixed(4)}</b> ${arrow}</td>`;
-		table += `<td><b>${(rate * 1.1).toFixed(4)}</b></td>`;
+		table += `<td><b>${(rate * 1.1 + 0.0001).toFixed(4)}</b></td>`;
 		table += "</tr>";
 	});
 	table += "</tbody></table>";
