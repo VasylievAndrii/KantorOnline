@@ -17,8 +17,8 @@
 								<?php echo htmlspecialchars($_SESSION['username']) . " (" . number_format($balance, 2) . "PLN)"; ?>
 							</a>
 							<div class="dropdown-menu" id="userDropdown">
-									<a href="#" class="dropdown-item">Funkcja 1</a>
-									<a href="#" class="dropdown-item">Funkcja 2</a>
+									<a href="#" class="dropdown-item">Portfel</a>
+									<a href="#" class="dropdown-item">Doładuj</a>
 									<a href="logout.php" class="dropdown-item">Wyloguj się</a>
 							</div>
 					</div>

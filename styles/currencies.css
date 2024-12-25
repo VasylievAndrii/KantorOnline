@@ -14,8 +14,9 @@ td {
 	border-bottom: 1px solid #ddd;
 }
 
-td:nth-child(2) {
-	text-align: left; /* Применяем выравнивание только ко второй колонке */
+td:nth-child(2),
+th:nth-child(2) {
+	text-align: left;
 }
 
 th {
