@@ -70,7 +70,7 @@ fetch("./databases/fetch_data.php")
 			document.title = `Kurs ${currencyDetail.name}`;
 
 			const rate = parseFloat(currencyData.rate);
-			const sellRate = (rate * 1.1).toFixed(4);
+			const sellRate = (rate * 1.02 + 0.0001).toFixed(4);
 
 			document.getElementById("currency-name").textContent = currencyDetail.name;
 			document.getElementById("currency-flag").src = `https://flagcdn.com/80x60/${currencyCode

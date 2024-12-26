@@ -54,26 +54,45 @@ fetch("./databases/fetch_data.php")
 	.catch(error => console.error("Błąd podczas pobierania danych:", error));
 
 function getLatestRatesWithTrends(data) {
-	const latest = {};
-
-	data.forEach(row => {
-		const { code, rate } = row;
-		const currentRate = parseFloat(rate);
-
-		if (!latest[code]) {
-			latest[code] = row;
-			latest[code].trend = "brak danych";
-		} else {
-			const previousRate = parseFloat(latest[code].rate);
-			const trend =
-				currentRate > previousRate ? "wzrost" : currentRate < previousRate ? "spadek" : "bez zmian";
-
-			latest[code] = row;
-			latest[code].trend = trend;
+	const groupedData = data.reduce((acc, row) => {
+		const { code } = row;
+		if (!acc[code]) {
+			acc[code] = [];
 		}
-	});
+		acc[code].push(row);
+		return acc;
+	}, {});
 
-	return Object.values(latest);
+	for (const code in groupedData) {
+		groupedData[code].sort((a, b) => {
+			const timestampA = new Date(`${a.data}T${a.czas}`).getTime();
+			const timestampB = new Date(`${b.data}T${b.czas}`).getTime();
+			return timestampB - timestampA;
+		});
+	}
+
+	const result = {};
+	for (const code in groupedData) {
+		const [newest, oldest] = groupedData[code];
+		const newRate = newest ? parseFloat(newest.rate) : null;
+		const oldRate = oldest ? parseFloat(oldest.rate) : null;
+
+		let trend = "brak danych";
+		if (newRate !== null && oldRate !== null) {
+			trend = newRate > oldRate ? "wzrost" : newRate < oldRate ? "spadek" : "bez zmian";
+		}
+
+		result[code] = {
+			code,
+			newRate,
+			oldRate,
+			trend,
+			newestTimestamp: newest ? `${newest.data} ${newest.czas}` : null,
+			oldestTimestamp: oldest ? `${oldest.data} ${oldest.czas}` : null,
+		};
+	}
+
+	return Object.values(result);
 }
 
 function createHtmlTable(data) {
@@ -90,31 +109,30 @@ function createHtmlTable(data) {
 
 	table += "<tbody>";
 	data.forEach(row => {
-		const rate = parseFloat(row.rate);
-		const trendClass = row.trend;
-		const fullName = currencyNames[row.code] || "Nieznana waluta";
+		const { code, newRate, trend } = row;
+		const fullName = currencyNames[code] || "Nieznana waluta";
 
 		let arrow = "";
-		if (trendClass === "wzrost") {
+		if (trend === "wzrost") {
 			arrow = '<i class="fa-solid fa-arrow-up" style="color: #6FA000;"></i>';
-		} else if (trendClass === "spadek") {
+		} else if (trend === "spadek") {
 			arrow = '<i class="fa-solid fa-arrow-down" style="color: #FF3B30;"></i>';
 		} else {
 			arrow = '<i class="fa-solid fa-equals"></i>';
 		}
 
-		const detailsLink = `currencyInfo.php?code=${row.code}`;
+		const detailsLink = `currencyInfo.php?code=${code}`;
 
 		table += "<tr>";
 		table += `<td>
 					<a href="${detailsLink}">
-						<img src="https://flagcdn.com/24x18/${row.code.slice(0, 2).toLowerCase()}.png" alt="${row.code}" />
-						<b>${row.code}</b>
+						<img src="https://flagcdn.com/24x18/${code.slice(0, 2).toLowerCase()}.png" alt="${code}" />
+						<b>${code}</b>
 					PLN <img src="https://flagcdn.com/24x18/pl.png" alt="PLN" /></a>
 					</td>`;
 		table += `<td><a href="${detailsLink}">${fullName}</a></td>`;
-		table += `<td class="${trendClass}"><b>${rate.toFixed(4)}</b> ${arrow}</td>`;
-		table += `<td><b>${(rate * 1.1 + 0.0001).toFixed(4)}</b></td>`;
+		table += `<td class="${trend}"><b>${newRate.toFixed(4)}</b> ${arrow}</td>`;
+		table += `<td><b>${(newRate * 1.02 + 0.0001).toFixed(4)}</b></td>`;
 		table += "</tr>";
 	});
 	table += "</tbody></table>";
