@@ -1,7 +1,30 @@
 <?php 
-	session_start(); 
-	$isAuthenticated = isset($_SESSION['user_id']);
+session_start(); 
+$isAuthenticated = isset($_SESSION['user_id']);
+
+if ($isAuthenticated) {
+	require_once "./databases/auth_db.php";
+
+	$userId = $_SESSION['user_id'];
+	$stmt = mysqli_prepare($conn, "SELECT balance FROM users WHERE id = ?");
+	mysqli_stmt_bind_param($stmt, "i", $userId);
+	mysqli_stmt_execute($stmt);
+	$result = mysqli_stmt_get_result($stmt);
+
+	if ($row = mysqli_fetch_assoc($result)) {
+		$balance = $row['balance'];
+		$_SESSION['balance'] = $balance;
+	} else {
+		$balance = 0;
+	}
+
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
+} else {
+  $balance = 0;
+}
 ?>
+
 
 <header class="header">
 	<div class="header__content">

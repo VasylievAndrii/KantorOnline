@@ -52,13 +52,11 @@ const currencyDetails = {
 	},
 };
 
-// Получение параметра 'code' из URL
 function getQueryParam(param) {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get(param);
 }
 
-// Запрос данных с сервера
 fetch("./databases/fetch_data.php")
 	.then(response => response.json())
 	.then(data => {
@@ -92,3 +90,40 @@ fetch("./databases/fetch_data.php")
 		document.querySelector(".container").innerHTML =
 			"<p>Wystąpił błąd podczas ładowania danych.</p>";
 	});
+
+document.getElementById("buyForm").addEventListener("submit", function (event) {
+	event.preventDefault();
+
+	const amount = parseFloat(document.getElementById("amount").value);
+	const currency = document.getElementById("currency-code").textContent;
+	const rate = parseFloat(document.getElementById("currency-rate").textContent);
+
+	if (!amount || amount <= 0) {
+		document.getElementById("buyResult").textContent = "Proszę wpisać poprawną kwotę";
+		return;
+	}
+
+	fetch("./databases/purchase.php", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams({
+			currency: currency,
+			amount: amount,
+			rate: rate,
+		}),
+	})
+		.then(response => response.json())
+		.then(data => {
+			const buyResult = document.getElementById("buyResult");
+			if (data.status === "success") {
+				buyResult.textContent = "Zakup udany! Nowe saldo:" + data.new_balance.toFixed(2) + " PLN.";
+				buyResult.classList.add("success");
+			} else {
+				buyResult.textContent = data.message;
+				buyResult.classList.add("error");
+			}
+		})
+		.catch(() => {
+			document.getElementById("buyResult").textContent = "Błąd podczas wykonywania żądania";
+		});
+});
