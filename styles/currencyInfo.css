@@ -6,10 +6,8 @@ body {
 }
 
 .container {
-	max-width: 800px;
 	margin: 50px auto;
 	padding: 20px;
-	text-align: center;
 }
 
 img {
@@ -24,4 +22,18 @@ a {
 
 h1 {
 	margin-bottom: 20px;
+}
+
+.main--currency-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	padding: 40px;
+}
+
+#currency-name {
+	text-align: center;
 }

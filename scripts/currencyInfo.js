@@ -72,7 +72,9 @@ fetch("./databases/fetch_data.php")
 			const rate = parseFloat(currencyData.rate);
 			const sellRate = (rate * 1.02 + 0.0001).toFixed(4);
 
-			document.getElementById("currency-name").textContent = currencyDetail.name;
+			document.getElementById(
+				"currency-name"
+			).textContent = `Kurs ${currencyCode} - ${currencyDetail.name}`;
 			document.getElementById("currency-flag").src = `https://flagcdn.com/80x60/${currencyCode
 				.slice(0, 2)
 				.toLowerCase()}.png`;
@@ -127,3 +129,70 @@ document.getElementById("buyForm").addEventListener("submit", function (event) {
 			document.getElementById("buyResult").textContent = "Błąd podczas wykonywania żądania";
 		});
 });
+
+const urlParams = new URLSearchParams(window.location.search);
+const currencyCode = urlParams.get("code") || "USD";
+
+fetch(`./databases/fiat_history.php?code=${currencyCode}`)
+	.then(response => response.json())
+	.then(data => {
+		const ctx = document.getElementById("currencyChart").getContext("2d");
+
+		const historyData = data.history.map(item => ({
+			x: new Date(item.datetime),
+			y: parseFloat(item.rate),
+		}));
+
+		const gradientHistory = ctx.createLinearGradient(0, 0, 0, 400);
+		gradientHistory.addColorStop(0, "#34A853");
+		gradientHistory.addColorStop(1, "rgba(0, 255, 0, 0)");
+
+		new Chart(ctx, {
+			type: "line",
+			data: {
+				datasets: [
+					{
+						label: "Historia (ostatni tydzień)",
+						data: historyData,
+						borderColor: "#34A853",
+						backgroundColor: gradientHistory,
+						fill: true,
+						tension: 0,
+						pointRadius: 0,
+					},
+				],
+			},
+			options: {
+				responsive: true,
+				plugins: {
+					legend: { display: true, position: "top" },
+					tooltip: {
+						mode: "index",
+						intersect: false,
+						callbacks: {
+							label: function (tooltipItem) {
+								return `${tooltipItem.raw.y.toLocaleString()} PLN`;
+							},
+						},
+					},
+				},
+				scales: {
+					x: {
+						type: "time",
+						time: {
+							unit: "day",
+							tooltipFormat: "yyyy-MM-dd HH:mm",
+							displayFormats: { hour: "HH:mm" },
+						},
+						title: { display: true, text: "Data i godzina" },
+						grid: { display: false },
+					},
+					y: {
+						title: { display: true, text: "Kurs PLN" },
+						grid: { borderDash: [3, 3] },
+					},
+				},
+			},
+		});
+	})
+	.catch(error => console.error("Błąd podczas pobierania danych:", error));

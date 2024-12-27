@@ -11,8 +11,7 @@
 <body>
   <?php include('samples/header.php'); ?>
 
-  <main class="main">
-    <div class="container">
+  <main class="main main--currency-info">
       <h1 id="currency-name"></h1>
       <img id="currency-flag" alt="Flaga waluty">
       <p><b>Kod waluty:</b> <span id="currency-code"></span></p>
@@ -26,9 +25,11 @@
         <button type="submit">Kup teraz</button>
       </form>
       <p id="buyResult" class="buy-result"></p>
-    </div>
+      <canvas id="currencyChart"></canvas>
   </main>
   <?php include('samples/footer.php'); ?>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   <script src="scripts/script.js"></script>
   <script src="scripts/currencyInfo.js"></script>
 </body>
