@@ -98,7 +98,7 @@ document.getElementById("buyForm").addEventListener("submit", function (event) {
 
 	const amount = parseFloat(document.getElementById("amount").value);
 	const currency = document.getElementById("currency-code").textContent;
-	const rate = parseFloat(document.getElementById("currency-rate").textContent);
+	const rate = parseFloat(document.getElementById("currency-sell-rate").textContent);
 
 	if (!amount || amount <= 0) {
 		document.getElementById("buyResult").textContent = "Proszę wpisać poprawną kwotę";

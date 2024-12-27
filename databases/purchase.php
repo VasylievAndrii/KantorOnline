@@ -36,23 +36,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   mysqli_begin_transaction($conn);
   try {
-      $updateBalanceQuery = "UPDATE users SET balance = ? WHERE id = ?";
-      $stmt = mysqli_prepare($conn, $updateBalanceQuery);
-      mysqli_stmt_bind_param($stmt, "di", $newBalance, $userId);
+    $updateBalanceQuery = "UPDATE users SET balance = ? WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $updateBalanceQuery);
+    mysqli_stmt_bind_param($stmt, "di", $newBalance, $userId);
+    mysqli_stmt_execute($stmt);
+
+    $insertPurchaseQuery = "INSERT INTO purchased_currencies (user_id, currency, amount, transaction_id) VALUES (?, ?, ?, ?)";
+    $transactionId = uniqid("txn_");
+    $stmt = mysqli_prepare($conn, $insertPurchaseQuery);
+    mysqli_stmt_bind_param($stmt, "isds", $userId, $currency, $amount, $transactionId);
+    mysqli_stmt_execute($stmt);
+
+    $checkWalletQuery = "SELECT id, amount FROM users_wallet WHERE user_id = ? AND currency = ?";
+    $stmt = mysqli_prepare($conn, $checkWalletQuery);
+    mysqli_stmt_bind_param($stmt, "is", $userId, $currency);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+      $newAmount = $row['amount'] + $amount;
+      $updateWalletQuery = "UPDATE users_wallet SET amount = ? WHERE id = ?";
+      $stmt = mysqli_prepare($conn, $updateWalletQuery);
+      mysqli_stmt_bind_param($stmt, "di", $newAmount, $row['id']);
       mysqli_stmt_execute($stmt);
-
-      $insertPurchaseQuery = "INSERT INTO purchased_currencies (user_id, currency, amount, transaction_id) VALUES (?, ?, ?, ?)";
-      $transactionId = uniqid("txn_"); 
-      $stmt = mysqli_prepare($conn, $insertPurchaseQuery);
-      mysqli_stmt_bind_param($stmt, "isds", $userId, $currency, $amount, $transactionId);
+    } else {
+      $insertWalletQuery = "INSERT INTO users_wallet (user_id, currency, amount) VALUES (?, ?, ?)";
+      $stmt = mysqli_prepare($conn, $insertWalletQuery);
+      mysqli_stmt_bind_param($stmt, "isd", $userId, $currency, $amount);
       mysqli_stmt_execute($stmt);
+    }
 
-      mysqli_commit($conn);
+    mysqli_commit($conn);
 
-      echo json_encode(["status" => "success", "message" => "Waluta została pomyślnie zakupiona", "new_balance" => $newBalance]);
-  } catch (Exception $e) {
+    echo json_encode(["status" => "success", "message" => "Waluta została pomyślnie zakupiona", "new_balance" => $newBalance]);
+    } catch (Exception $e) {
       mysqli_rollback($conn);
       echo json_encode(["status" => "error", "message" => "Błąd podczas przetwarzania zakupu"]);
-  }
+    }
 }
 ?>
