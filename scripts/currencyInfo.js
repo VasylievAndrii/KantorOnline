@@ -120,13 +120,55 @@ document.getElementById("buyForm").addEventListener("submit", function (event) {
 			if (data.status === "success") {
 				buyResult.textContent = "Zakup udany! Nowe saldo:" + data.new_balance.toFixed(2) + " PLN.";
 				buyResult.classList.add("success");
+				buyResult.classList.remove("danger");
 			} else {
 				buyResult.textContent = data.message;
-				buyResult.classList.add("error");
+				buyResult.classList.add("danger");
+				buyResult.classList.remove("success");
 			}
 		})
 		.catch(() => {
 			document.getElementById("buyResult").textContent = "Błąd podczas wykonywania żądania";
+		});
+});
+
+document.getElementById("sellForm").addEventListener("submit", function (event) {
+	event.preventDefault();
+
+	const amount = parseFloat(document.getElementById("sellAmount").value);
+	const currency = document.getElementById("currency-code").textContent;
+	const rate = parseFloat(document.getElementById("currency-rate").textContent);
+
+	if (!amount || amount <= 0) {
+		document.getElementById("sellResult").textContent = "Proszę wpisać poprawną kwotę";
+		return;
+	}
+
+	fetch("./databases/sell.php", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams({
+			currency: currency,
+			amount: amount,
+			rate: rate,
+		}),
+	})
+		.then(response => response.json())
+		.then(data => {
+			const sellResult = document.getElementById("sellResult");
+			if (data.status === "success") {
+				sellResult.textContent =
+					"Sprzedaż udana! Nowe saldo: " + data.new_balance.toFixed(2) + " PLN.";
+				sellResult.classList.add("success");
+				sellResult.classList.remove("danger");
+			} else {
+				sellResult.textContent = data.message;
+				sellResult.classList.add("danger");
+				sellResult.classList.remove("success");
+			}
+		})
+		.catch(() => {
+			document.getElementById("sellResult").textContent = "Błąd podczas wykonywania żądania";
 		});
 });
 

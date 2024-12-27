@@ -47,6 +47,27 @@ ul {
 	color: #ea3943;
 }
 
+/* alert styles */
+.alert {
+	margin-bottom: 10px;
+}
+
+.alert-text {
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+
+.danger {
+	background-color: #f8d7da;
+	color: #721c24;
+}
+
+.success {
+	background-color: #d4edda;
+	color: #155724;
+}
+
 /* header */
 .header {
 	background-color: #3f51b5;

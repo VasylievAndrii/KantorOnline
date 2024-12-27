@@ -25,6 +25,12 @@
         <button type="submit">Kup teraz</button>
       </form>
       <p id="buyResult" class="buy-result"></p>
+      <form id="sellForm">
+        <label for="sellAmount">Kwota do sprzeday:</label>
+        <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
+        <button type="submit">Sprzedać</button>
+      </form>
+      <p id="sellResult" class="sell-result"></p>
       <canvas id="currencyChart"></canvas>
   </main>
   <?php include('samples/footer.php'); ?>

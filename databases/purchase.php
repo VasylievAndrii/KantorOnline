@@ -4,9 +4,9 @@ require_once "auth_db.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if (!isset($_SESSION["user_id"])) {
-    header("Location: ../login.php");
+    echo json_encode(["status" => "error", "message" => "Użytkownik nie jest zalogowany"]);
     exit;
-  }
+}
 
   $userId = $_SESSION["user_id"]; 
   $currency = trim($_POST["currency"]); 
