@@ -12,27 +12,28 @@
   <?php include('samples/header.php'); ?>
 
   <main class="main main--currency-info">
-      <h1 id="currency-name"></h1>
-      <img id="currency-flag" alt="Flaga waluty">
-      <p><b>Kod waluty:</b> <span id="currency-code"></span></p>
-      <p><b>Kurs kupna:</b> <span id="currency-rate"></span> PLN</p>
-      <p><b>Kurs sprzedaży:</b> <span id="currency-sell-rate"></span> PLN</p>
-      <p><b>Opis:</b> <span id="currency-description"></span></p>
-      <a href="currencies.php">Wróć do strony walut</a>
-      <form id="buyForm">
-        <label for="amount">Kwota do zakupu:</label>
-        <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
-        <button type="submit">Kup teraz</button>
-      </form>
-      <p id="buyResult" class="buy-result"></p>
-      <form id="sellForm">
-        <label for="sellAmount">Kwota do sprzeday:</label>
-        <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
-        <button type="submit">Sprzedać</button>
-      </form>
-      <p id="sellResult" class="sell-result"></p>
-      <canvas id="currencyChart"></canvas>
+    <h1 id="currency-name"></h1>
+    <img id="currency-flag" alt="Flaga waluty">
+    <p><b>Kod waluty:</b> <span id="currency-code"></span></p>
+    <p><b>Kurs kupna:</b> <span id="currency-rate"></span> PLN</p>
+    <p><b>Kurs sprzedaży:</b> <span id="currency-sell-rate"></span> PLN</p>
+    <p><b>Opis:</b> <span id="currency-description"></span></p>
+    <a href="currencies.php">Wróć do strony walut</a>
+    <form id="buyForm">
+      <label for="amount">Kwota do zakupu:</label>
+      <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
+      <button type="submit">Kup teraz</button>
+    </form>
+    <p id="buyResult" class="buy-result"></p>
+    <form id="sellForm">
+      <label for="sellAmount">Kwota do sprzedania:</label>
+      <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
+      <button type="submit">Sprzedać</button>
+    </form>
+    <p id="sellResult" class="sell-result"></p>
+    <canvas id="currencyChart"></canvas>
   </main>
+
   <?php include('samples/footer.php'); ?>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>

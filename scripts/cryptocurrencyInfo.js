@@ -1,3 +1,75 @@
+const cryptocurrencyDetails = {
+	BTC: {
+		name: "Bitcoin",
+		description: "Pierwsza i najbardziej znana kryptowaluta, oparta na technologii blockchain.",
+		logo: "bitcoin-logo.png",
+	},
+	ETH: {
+		name: "Ethereum",
+		description:
+			"Kryptowaluta i platforma dla inteligentnych kontraktów oraz aplikacji zdecentralizowanych.",
+		logo: "ethereum-logo.png",
+	},
+	LTC: {
+		name: "Litecoin",
+		description: "Lekka kryptowaluta stworzona jako szybsza alternatywa dla Bitcoina.",
+		logo: "litecoin-logo.png",
+	},
+	XRP: {
+		name: "Ripple (XRP)",
+		description: "Kryptowaluta zaprojektowana do szybkich i tanich transakcji międzybankowych.",
+		logo: "xrp-logo.png",
+	},
+	BCH: {
+		name: "Bitcoin Cash",
+		description:
+			"Kryptowaluta będąca rozwidleniem Bitcoina, zaprojektowana dla szybszych i tańszych transakcji.",
+		logo: "bitcoin-cash-logo.png",
+	},
+};
+
+function getQueryParam(param) {
+	const urlParams = new URLSearchParams(window.location.search);
+	return urlParams.get(param);
+}
+
+fetch("./databases/fetch_data.php")
+	.then(response => response.json())
+	.then(data => {
+		const cryptocurrencyCode = getQueryParam("code");
+		const allCryptocurrencies = data.krypto;
+		const cryptocurrencyData = allCryptocurrencies.find(row => row.code === cryptocurrencyCode);
+
+		const cryptocurrencyDetail = cryptocurrencyDetails[cryptocurrencyCode];
+
+		if (cryptocurrencyData && cryptocurrencyDetail) {
+			document.title = `Kurs ${cryptocurrencyDetail.name}`;
+
+			const rate = parseFloat(cryptocurrencyData.rate);
+			const sellRate = (rate * 1.02 + 0.0001).toFixed(4);
+
+			document.getElementById(
+				"cryptocurrency-name"
+			).textContent = `Kurs ${cryptocurrencyCode} - ${cryptocurrencyDetail.name}`;
+			document.getElementById(
+				"cryptocurrency-logo"
+			).src = `./images/${cryptocurrencyDetails[cryptocurrencyCode].logo}`;
+			document.getElementById("cryptocurrency-code").textContent = cryptocurrencyCode;
+			document.getElementById("cryptocurrency-rate").textContent = rate.toFixed(4);
+			document.getElementById("cryptocurrency-sell-rate").textContent = sellRate;
+			document.getElementById("cryptocurrency-description").textContent =
+				cryptocurrencyDetail.description;
+		} else {
+			document.querySelector(".container").innerHTML =
+				"<p>Nie znaleziono informacji o tej kryptowalucie.</p>";
+		}
+	})
+	.catch(error => {
+		console.error("Błąd podczas pobierania danych:", error);
+		document.querySelector(".container").innerHTML =
+			"<p>Wystąpił błąd podczas ładowania danych.</p>";
+	});
+
 const urlParams = new URLSearchParams(window.location.search);
 const cryptoCode = urlParams.get("code") || "BTC";
 

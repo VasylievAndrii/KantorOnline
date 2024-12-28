@@ -1,11 +1,14 @@
-/* body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-	background-color: #f8f8f8;
-	text-align: center;
+.main--cryptocurrency-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	padding: 40px;
 }
-.chart-container {
-	width: 80%;
-	margin: 50px auto;
-} */
+
+#cryptocurrency-logo {
+	height: 20px;
+	width: 20px;
+}

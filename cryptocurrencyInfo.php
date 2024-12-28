@@ -11,11 +11,29 @@
 <body>
   <?php include('samples/header.php'); ?>
 
-  <main class="main">
-    <h1>Wykres Kryptowaluty</h1>
-    <p id="cryptoName" class="crypto-name"></p>
+  <main class="main  main--cryptocurrency-info">
+    <h1 id="cryptocurrency-name"></h1>
+    <img id="cryptocurrency-logo" alt="Логотип криптовалюты">
+    <p><b>Kod kryptowaluty</b> <span id="cryptocurrency-code"></span></p>
+    <p><b>Kurs kupna:</b> <span id="cryptocurrency-rate"></span> USD</p>
+    <p><b>Kurs sprzedaży:</b> <span id="cryptocurrency-sell-rate"></span> USD</p>
+    <p><b>Opis: </b> <span id="cryptocurrency-description"></span></p>
+    <a href="cryptocurrencies.php">Wróć do strony kryptowalut</a>
+    <form id="buyForm">
+      <label for="amount">Kwota do zakupu:</label>
+      <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
+      <button type="submit">Kup teraz</button>
+    </form>
+    <p id="buyResult" class="buy-result"></p>
+    <form id="sellForm">
+      <label for="sellAmount">Kwota do sprzedania:</label>
+      <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
+      <button type="submit">Sprzedać</button>
+    </form>
+    <p id="sellResult" class="sell-result"></p>
     <canvas id="cryptoChart"></canvas>
   </main>
+  
   <?php include('samples/footer.php'); ?>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
