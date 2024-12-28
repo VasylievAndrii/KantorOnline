@@ -13,10 +13,10 @@
 
   <main class="main  main--cryptocurrency-info">
     <h1 id="cryptocurrency-name"></h1>
-    <img id="cryptocurrency-logo" alt="Логотип криптовалюты">
+    <img id="cryptocurrency-logo" alt="Cryptocurrency logo">
     <p><b>Kod kryptowaluty</b> <span id="cryptocurrency-code"></span></p>
-    <p><b>Kurs kupna:</b> <span id="cryptocurrency-rate"></span> USD</p>
-    <p><b>Kurs sprzedaży:</b> <span id="cryptocurrency-sell-rate"></span> USD</p>
+    <p><b>Kurs kupna:</b> <span id="cryptocurrency-rate"></span> PLN</p>
+    <p><b>Kurs sprzedaży:</b> <span id="cryptocurrency-sell-rate"></span> PLN</p>
     <p><b>Opis: </b> <span id="cryptocurrency-description"></span></p>
     <a href="cryptocurrencies.php">Wróć do strony kryptowalut</a>
     <form id="buyForm">
@@ -33,7 +33,7 @@
     <p id="sellResult" class="sell-result"></p>
     <canvas id="cryptoChart"></canvas>
   </main>
-  
+
   <?php include('samples/footer.php'); ?>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>

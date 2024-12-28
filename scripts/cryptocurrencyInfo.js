@@ -38,6 +38,7 @@ fetch("./databases/fetch_data.php")
 	.then(data => {
 		const cryptocurrencyCode = getQueryParam("code");
 		const allCryptocurrencies = data.krypto;
+		const usdToPlnRate = parseFloat(data.usd_to_pln);
 		const cryptocurrencyData = allCryptocurrencies.find(row => row.code === cryptocurrencyCode);
 
 		const cryptocurrencyDetail = cryptocurrencyDetails[cryptocurrencyCode];
@@ -45,8 +46,8 @@ fetch("./databases/fetch_data.php")
 		if (cryptocurrencyData && cryptocurrencyDetail) {
 			document.title = `Kurs ${cryptocurrencyDetail.name}`;
 
-			const rate = parseFloat(cryptocurrencyData.rate);
-			const sellRate = (rate * 1.02 + 0.0001).toFixed(4);
+			const rate = parseFloat(cryptocurrencyData.rate * usdToPlnRate);
+			const sellRate = (rate * 1.02 + 0.0001).toFixed(2);
 
 			document.getElementById(
 				"cryptocurrency-name"
@@ -55,7 +56,7 @@ fetch("./databases/fetch_data.php")
 				"cryptocurrency-logo"
 			).src = `./images/${cryptocurrencyDetails[cryptocurrencyCode].logo}`;
 			document.getElementById("cryptocurrency-code").textContent = cryptocurrencyCode;
-			document.getElementById("cryptocurrency-rate").textContent = rate.toFixed(4);
+			document.getElementById("cryptocurrency-rate").textContent = rate.toFixed(2);
 			document.getElementById("cryptocurrency-sell-rate").textContent = sellRate;
 			document.getElementById("cryptocurrency-description").textContent =
 				cryptocurrencyDetail.description;
@@ -77,15 +78,16 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 	.then(response => response.json())
 	.then(data => {
 		const ctx = document.getElementById("cryptoChart").getContext("2d");
+		const usdToPlnRate = parseFloat(data.usd_to_pln);
 
 		const historyData = data.history.map(item => ({
 			x: new Date(item.datetime),
-			y: parseFloat(item.rate),
+			y: parseFloat(item.rate) * usdToPlnRate,
 		}));
 
 		const predictionData = data.prediction.map(item => ({
 			x: new Date(item.datetime),
-			y: parseFloat(item.rate),
+			y: parseFloat(item.rate) * usdToPlnRate,
 		}));
 
 		const gradientHistory = ctx.createLinearGradient(0, 0, 0, 400);
@@ -129,7 +131,7 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 						intersect: false,
 						callbacks: {
 							label: function (tooltipItem) {
-								return `${tooltipItem.raw.y.toLocaleString()} USD`;
+								return `${tooltipItem.raw.y.toLocaleString()} PLN`;
 							},
 						},
 					},
@@ -146,7 +148,7 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 						grid: { display: false },
 					},
 					y: {
-						title: { display: true, text: "Kurs USD" },
+						title: { display: true, text: "Kurs PLN" },
 						grid: { borderDash: [3, 3] },
 					},
 				},

@@ -85,14 +85,41 @@ function processCryptocurrencyData(kursy) {
 	const kursyFiat = kursy.fiat;
 	const kursyKrypto = kursy.krypto;
 
-	const usdToPlnRate = kursyFiat.find(currency => currency.code === "USD").rate;
+	const usdToPlnRate = kursyFiat
+		.filter(currency => currency.code === "USD")
+		.sort((a, b) => {
+			const dateA = new Date(`${a.data}T${a.czas}`);
+			const dateB = new Date(`${b.data}T${b.czas}`);
+			return dateB - dateA;
+		})[0]?.rate;
 
-	kursyKrypto.forEach(function (crypto) {
-		const rateInPln = parseFloat(crypto.rate) * usdToPlnRate;
-		const priceElement = document.querySelector(`.main__cryptocurrency-price--${crypto.code}`);
+	if (!usdToPlnRate) {
+		console.error("Nie udało się znaleźć kursu USD -> PLN.");
+		return;
+	}
 
-		if (priceElement) {
-			priceElement.innerText = `${rateInPln.toFixed(2)} PLN`;
+	const groupedKrypto = kursyKrypto.reduce((acc, item) => {
+		if (!acc[item.code]) acc[item.code] = [];
+		acc[item.code].push(item);
+		return acc;
+	}, {});
+
+	Object.keys(groupedKrypto).forEach(code => {
+		const latestRate = groupedKrypto[code].sort((a, b) => {
+			const dateA = new Date(`${a.data}T${a.czas}`);
+			const dateB = new Date(`${b.data}T${b.czas}`);
+			return dateB - dateA;
+		})[0]?.rate;
+
+		if (latestRate) {
+			const rateInPln = parseFloat(latestRate) * usdToPlnRate;
+			const priceElement = document.querySelector(`.main__cryptocurrency-price--${code}`);
+
+			if (priceElement) {
+				priceElement.innerText = `${rateInPln.toFixed(2)} PLN`;
+			}
+		} else {
+			console.warn(`Nie udało się znaleźć kursu dla kryptowaluty: ${code}`);
 		}
 	});
 
