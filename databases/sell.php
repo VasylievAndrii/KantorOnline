@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (!$stmt) {
             throw new Exception("Błąd podczas przygotowywania zapytania: " . mysqli_error($conn));
         }
-        mysqli_stmt_bind_param($stmt, "isdsd", $userId, $currency, $amount, $rate, $transactionId);
+        mysqli_stmt_bind_param($stmt, "isdss", $userId, $currency, $amount, $rate, $transactionId);
         mysqli_stmt_execute($stmt);
 
         $getBalanceQuery = "SELECT balance FROM users WHERE id = ?";

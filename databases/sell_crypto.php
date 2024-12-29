@@ -64,13 +64,13 @@
             mysqli_stmt_bind_param($stmt, "di", $totalGain, $userId);
             mysqli_stmt_execute($stmt);
 
-            $insertSellQuery = "INSERT INTO sold_currencies (user_id, currency, amount, rate, transaction_id) VALUES (?, ?, ?, ?, ?)";
+            $insertSellQuery = "INSERT INTO sold_crypto (user_id, currency, amount, rate, transaction_id, sell_date) VALUES (?, ?, ?, ?, ?, NOW())";
             $transactionId = uniqid("txn_");
             $stmt = mysqli_prepare($conn, $insertSellQuery);
             if (!$stmt) {
                 throw new Exception("Błąd podczas przygotowywania zapytania: " . mysqli_error($conn));
             }
-            mysqli_stmt_bind_param($stmt, "isdsd", $userId, $currency, $amount, $rate, $transactionId);
+            mysqli_stmt_bind_param($stmt, "isdss", $userId, $currency, $amount, $rate, $transactionId);
             mysqli_stmt_execute($stmt);
 
             $getBalanceQuery = "SELECT balance FROM users WHERE id = ?";
