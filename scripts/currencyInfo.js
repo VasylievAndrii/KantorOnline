@@ -117,14 +117,19 @@ document.getElementById("buyForm").addEventListener("submit", function (event) {
 		.then(response => response.json())
 		.then(data => {
 			const buyResult = document.getElementById("buyResult");
+			const sellResult = document.getElementById("sellResult");
 			if (data.status === "success") {
 				buyResult.textContent = "Zakup udany! Nowe saldo:" + data.new_balance.toFixed(2) + " PLN.";
 				buyResult.classList.add("success");
 				buyResult.classList.remove("danger");
+				buyResult.classList.remove("hidden");
+				sellResult.classList.add("hidden");
 			} else {
 				buyResult.textContent = data.message;
 				buyResult.classList.add("danger");
 				buyResult.classList.remove("success");
+				buyResult.classList.remove("hidden");
+				sellResult.classList.add("hidden");
 			}
 		})
 		.catch(() => {
@@ -156,15 +161,20 @@ document.getElementById("sellForm").addEventListener("submit", function (event) 
 		.then(response => response.json())
 		.then(data => {
 			const sellResult = document.getElementById("sellResult");
+			const buyResult = document.getElementById("buyResult");
 			if (data.status === "success") {
 				sellResult.textContent =
 					"Sprzedaż udana! Nowe saldo: " + data.new_balance.toFixed(2) + " PLN.";
 				sellResult.classList.add("success");
 				sellResult.classList.remove("danger");
+				sellResult.classList.remove("hidden");
+				buyResult.classList.add("hidden");
 			} else {
 				sellResult.textContent = data.message;
 				sellResult.classList.add("danger");
 				sellResult.classList.remove("success");
+				sellResult.classList.remove("hidden");
+				buyResult.classList.add("hidden");
 			}
 		})
 		.catch(() => {
