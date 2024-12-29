@@ -41,7 +41,7 @@ if ($isAuthenticated) {
 							</a>
 							<div class="dropdown-menu" id="userDropdown">
 									<a href="wallet.php" class="dropdown-item">Portfel</a>
-									<a href="#" class="dropdown-item">Doładuj</a>
+									<a href="javascript:void(0);" class="dropdown-item" onclick="openModal()">Doładuj / Wypłać</a>
 									<a href="logout.php" class="dropdown-item">Wyloguj się</a>
 							</div>
 					</div>
@@ -61,6 +61,30 @@ if ($isAuthenticated) {
 			<div class="bar"></div>
 			<div class="bar"></div>
 			<div class="bar"></div>
+		</div>
+
+		<div id="modal" class="modal">
+			<div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <div class="modal-tabs">
+					<div class="modal-tab active" data-tab="modal-deposit" onclick="switchModalTab('modal-deposit')">Doładuj</div>
+					<div class="modal-tab" data-tab="modal-withdraw" onclick="switchModalTab('modal-withdraw')">Wypłać</div>
+        </div>
+        <div id="modal-deposit" class="modal-tab-content active">
+					<form id="depositForm" onsubmit="handleModalTransaction(event, 'deposit')">
+						<label for="depositAmount">Kwota doładowania:</label>
+						<input type="number" id="depositAmount" name="amount" step="0.01" required>
+						<button type="submit">Potwierdź</button>
+					</form>
+        </div>
+        <div id="modal-withdraw" class="modal-tab-content">
+					<form id="withdrawForm" onsubmit="handleModalTransaction(event, 'withdraw')">
+						<label for="withdrawAmount">Kwota wypłaty:</label>
+						<input type="number" id="withdrawAmount" name="amount" step="0.01" required>
+						<button type="submit">Potwierdź</button>
+					</form>
+        </div>
+			</div>
 		</div>
 	</div>
 </header>
