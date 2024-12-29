@@ -95,14 +95,19 @@ document.getElementById("buyForm").addEventListener("submit", function (event) {
 		.then(response => response.json())
 		.then(data => {
 			const buyResult = document.getElementById("buyResult");
+			const sellResult = document.getElementById("sellResult");
 			if (data.status === "success") {
 				buyResult.textContent = "Zakup udany! Nowe saldo: " + data.new_balance.toFixed(2) + " PLN.";
 				buyResult.classList.add("success");
 				buyResult.classList.remove("danger");
+				buyResult.classList.remove("hidden");
+				sellResult.classList.add("hidden");
 			} else {
 				buyResult.textContent = data.message;
 				buyResult.classList.add("danger");
 				buyResult.classList.remove("success");
+				buyResult.classList.remove("hidden");
+				sellResult.classList.add("hidden");
 			}
 		})
 		.catch(() => {
@@ -134,15 +139,20 @@ document.getElementById("sellForm").addEventListener("submit", function (event) 
 		.then(response => response.json())
 		.then(data => {
 			const sellResult = document.getElementById("sellResult");
+			const buyResult = document.getElementById("buyResult");
 			if (data.status === "success") {
 				sellResult.textContent =
 					"Sprzedaż udana! Nowe saldo: " + data.new_balance.toFixed(2) + " PLN.";
 				sellResult.classList.add("success");
 				sellResult.classList.remove("danger");
+				sellResult.classList.remove("hidden");
+				buyResult.classList.add("hidden");
 			} else {
 				sellResult.textContent = data.message;
 				sellResult.classList.add("danger");
 				sellResult.classList.remove("success");
+				sellResult.classList.remove("hidden");
+				buyResult.classList.add("hidden");
 			}
 		})
 		.catch(() => {
@@ -171,11 +181,11 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 
 		const gradientHistory = ctx.createLinearGradient(0, 0, 0, 400);
 		gradientHistory.addColorStop(0, "#34A853");
-		gradientHistory.addColorStop(1, "rgba(0, 255, 0, 0)");
+		gradientHistory.addColorStop(1, "rgba(52, 168, 83, 0.2)");
 
 		const gradientPrediction = ctx.createLinearGradient(0, 0, 0, 400);
 		gradientPrediction.addColorStop(0, "rgba(0, 0, 255, 0.4)");
-		gradientPrediction.addColorStop(1, "rgba(0, 0, 255, 0)");
+		gradientPrediction.addColorStop(1, "rgba(66, 133, 244, 0.2)");
 
 		new Chart(ctx, {
 			type: "line",
@@ -188,7 +198,8 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 						backgroundColor: gradientHistory,
 						fill: true,
 						tension: 0.4,
-						pointRadius: 0,
+						pointRadius: 1,
+						borderWidth: 2,
 					},
 					{
 						label: "Predykcja",
@@ -197,7 +208,8 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 						backgroundColor: gradientPrediction,
 						fill: true,
 						tension: 0.4,
-						pointRadius: 0,
+						pointRadius: 1,
+						borderWidth: 2,
 					},
 				],
 			},
@@ -224,11 +236,11 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 							displayFormats: { hour: "HH:mm" },
 						},
 						title: { display: true, text: "Data i godzina" },
-						grid: { display: false },
+						grid: { color: "rgba(0, 0, 0, 0.1)" },
 					},
 					y: {
 						title: { display: true, text: "Kurs PLN" },
-						grid: { borderDash: [3, 3] },
+						grid: { color: "rgba(0, 0, 0, 0.1)" },
 					},
 				},
 			},

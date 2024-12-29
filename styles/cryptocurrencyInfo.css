@@ -5,14 +5,100 @@
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-	padding: 40px;
+	padding: 40px 40px 20px;
 }
 
-#cryptocurrency-name {
-	text-align: center;
+.container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.main--cryptocurrency-info p {
+	margin-bottom: 5px;
 }
 
 #cryptocurrency-logo {
-	height: 20px;
-	width: 20px;
+	height: 40px;
+	width: 40px;
+}
+
+.crypto-forms {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.form {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.form label {
+	font-size: 14px;
+	margin-bottom: 5px;
+	color: #333;
+}
+
+.form input {
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.btn {
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s;
+}
+
+.btn-buy {
+	background-color: #28a745;
+	color: #fff;
+}
+
+.btn-buy:hover {
+	background-color: #218838;
+}
+
+.btn-sell {
+	background-color: #dc3545;
+	color: #fff;
+}
+
+.btn-sell:hover {
+	background-color: #c82333;
+}
+
+.notification {
+	padding: 15px;
+	border-radius: 5px;
+	margin-top: 10px;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+#cryptoChart {
+	margin-top: 40px;
+}
+
+.back {
+	margin-top: 20px;
+	text-decoration: none;
+	color: #007bff;
+	text-align: center;
 }

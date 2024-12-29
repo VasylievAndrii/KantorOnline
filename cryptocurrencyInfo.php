@@ -12,26 +12,35 @@
   <?php include('samples/header.php'); ?>
 
   <main class="main  main--cryptocurrency-info">
-    <h1 id="cryptocurrency-name"></h1>
-    <img id="cryptocurrency-logo" alt="Cryptocurrency logo">
+    <div class="container">
+      <h1 id="cryptocurrency-name"></h1>
+      <img id="cryptocurrency-logo" alt="Cryptocurrency logo">
+    </div>
     <p><b>Kod kryptowaluty</b> <span id="cryptocurrency-code"></span></p>
     <p><b>Kurs kupna:</b> <span id="cryptocurrency-rate"></span> PLN</p>
     <p><b>Kurs sprzedaży:</b> <span id="cryptocurrency-sell-rate"></span> PLN</p>
     <p><b>Opis: </b> <span id="cryptocurrency-description"></span></p>
-    <a href="cryptocurrencies.php">Wróć do strony kryptowalut</a>
-    <form id="buyForm">
-      <label for="amount">Kwota do zakupu:</label>
-      <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
-      <button type="submit">Kup teraz</button>
-    </form>
-    <p id="buyResult" class="buy-result"></p>
-    <form id="sellForm">
-      <label for="sellAmount">Kwota do sprzedania:</label>
-      <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
-      <button type="submit">Sprzedać</button>
-    </form>
-    <p id="sellResult" class="sell-result"></p>
+    <div class="crypto-forms">
+      <form id="buyForm" class="form">
+        <label for="amount">
+          <i class="fas fa-shopping-cart"></i> Kwota do zakupu:
+        </label>
+        <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
+        <button type="submit" class="btn btn-buy">Kup teraz</button>
+      </form>
+
+      <form id="sellForm" class="form">
+        <label for="sellAmount">
+          <i class="fas fa-coins"></i> Kwota do sprzedania:
+        </label>
+        <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
+        <button type="submit" class="btn btn-sell">Sprzedać</button>
+      </form>
+    </div>
+    <p id="buyResult" class="buy-result notification hidden"></p>
+    <p id="sellResult" class="sell-result notification hidden"></p>
     <canvas id="cryptoChart"></canvas>
+    <a class="back" href="cryptocurrencies.php">Wróć do strony kryptowalut</a>
   </main>
 
   <?php include('samples/footer.php'); ?>
