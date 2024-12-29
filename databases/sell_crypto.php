@@ -64,7 +64,7 @@
             mysqli_stmt_bind_param($stmt, "di", $totalGain, $userId);
             mysqli_stmt_execute($stmt);
 
-            $insertSellQuery = "INSERT INTO sold_crypto (user_id, currency, amount, rate, transaction_id) VALUES (?, ?, ?, ?, ?)";
+            $insertSellQuery = "INSERT INTO sold_currencies (user_id, currency, amount, rate, transaction_id) VALUES (?, ?, ?, ?, ?)";
             $transactionId = uniqid("txn_");
             $stmt = mysqli_prepare($conn, $insertSellQuery);
             if (!$stmt) {
