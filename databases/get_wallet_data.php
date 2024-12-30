@@ -54,7 +54,7 @@
 
     if ($result_fiat->num_rows > 0) {
       while ($row = $result_fiat->fetch_assoc()) {
-        $currencyRates[$row['code']] = $row['rate'] * $usdToPlnRate;
+        $currencyRates[$row['code']] = $row['rate'];
       }
     }
 

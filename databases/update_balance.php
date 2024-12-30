@@ -18,7 +18,6 @@ try {
         throw new Exception("Nieprawidłowe dane transakcji");
     }
 
-    // Получение текущего баланса
     $stmt = $conn->prepare("SELECT balance FROM users WHERE id = ?");
     $stmt->bind_param("i", $userId);
     $stmt->execute();
@@ -31,7 +30,6 @@ try {
 
     $currentBalance = floatval($row['balance']);
 
-    // Обновление баланса
     if ($action === 'deposit') {
         $newBalance = $currentBalance + $amount;
     } elseif ($action === 'withdraw') {
@@ -43,7 +41,6 @@ try {
         throw new Exception("Nieprawidłowe działanie");
     }
 
-    // Запись нового баланса в базу данных
     $stmt = $conn->prepare("UPDATE users SET balance = ? WHERE id = ?");
     $stmt->bind_param("di", $newBalance, $userId);
     $stmt->execute();

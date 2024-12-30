@@ -16,7 +16,7 @@
 
         <main class="main main--wallet">
             <h1>Twój portfel, <?= htmlspecialchars($_SESSION['username']) ?>!</h1>
-            <p><strong>Saldo całkowite:</strong> <?= number_format($totalBalance, 2) ?> PLN</p>
+            <p class="total-balance"><strong>Saldo całkowite:</strong> <?= number_format($totalBalance, 2) ?> PLN</p>
 
             <div class="tabs">
                 <div class="tab active" data-tab="currencies" onclick="switchTab('currencies')">Waluty</div>
@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th>Waluta</th>
-                            <th>Kupno</th>
+                            <th>Sprzedaż</th>
                             <th>Ilość</th>
                             <th>Całkowity</th>
                         </tr>
@@ -41,7 +41,7 @@
                                 $total = $rate * $currency['amount'];
                             ?>
                             <tr>
-                                <td><?= htmlspecialchars($currency['currency']) ?></td>
+                                <td><a href="currencyInfo.php?code=<?= urlencode($currency['currency']) ?>"><?= htmlspecialchars($currency['currency']) ?></a></td>
                                 <td><?= number_format($rate, 4) ?></td>
                                 <td><?= htmlspecialchars($currency['amount']) ?></td>
                                 <td><?= number_format($total, 4) ?></td>
@@ -69,7 +69,7 @@
                                 $total = $rate * $crypto['amount'];
                             ?>
                             <tr>
-                                <td><?= htmlspecialchars($crypto['currency']) ?></td>
+                                <td><a href="cryptocurrencyInfo.php?code=<?= urlencode($crypto['currency']) ?>"><?= htmlspecialchars($crypto['currency']) ?></a></td>
                                 <td><?= number_format($rate, 2) ?></td>
                                 <td><?= htmlspecialchars($crypto['amount']) ?></td>
                                 <td><?= number_format($total, 2) ?></td>
