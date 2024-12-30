@@ -57,7 +57,7 @@
                     <thead>
                         <tr>
                             <th>Kryptowaluta</th>
-                            <th>Kupno</th>
+                            <th>Sprzedaż</th>
                             <th>Ilość</th>
                             <th>Całkowity</th>
                         </tr>
