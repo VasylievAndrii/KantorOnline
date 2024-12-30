@@ -183,7 +183,7 @@ document.getElementById("sellForm").addEventListener("submit", function (event) 
 });
 
 const urlParams = new URLSearchParams(window.location.search);
-const currencyCode = urlParams.get("code") || "USD";
+const currencyCode = urlParams.get("code");
 
 fetch(`./databases/fiat_history.php?code=${currencyCode}`)
 	.then(response => response.json())

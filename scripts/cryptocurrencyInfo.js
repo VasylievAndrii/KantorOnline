@@ -161,7 +161,7 @@ document.getElementById("sellForm").addEventListener("submit", function (event) 
 });
 
 const urlParams = new URLSearchParams(window.location.search);
-const cryptoCode = urlParams.get("code") || "BTC";
+const cryptoCode = urlParams.get("code");
 
 fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 	.then(response => response.json())

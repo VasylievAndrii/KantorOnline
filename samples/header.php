@@ -74,14 +74,14 @@ if ($isAuthenticated) {
 					<form id="depositForm" onsubmit="handleModalTransaction(event, 'deposit')">
 						<label for="depositAmount">Kwota doładowania:</label>
 						<input type="number" id="depositAmount" name="amount" step="0.01" required>
-						<button type="submit">Potwierdź</button>
+						<button type="submit" class="primary-button">Potwierdź</button>
 					</form>
         </div>
         <div id="modal-withdraw" class="modal-tab-content">
 					<form id="withdrawForm" onsubmit="handleModalTransaction(event, 'withdraw')">
 						<label for="withdrawAmount">Kwota wypłaty:</label>
 						<input type="number" id="withdrawAmount" name="amount" step="0.01" required>
-						<button type="submit">Potwierdź</button>
+						<button type="submit" class="primary-button">Potwierdź</button>
 					</form>
         </div>
 			</div>
