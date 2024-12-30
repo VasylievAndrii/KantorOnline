@@ -90,6 +90,8 @@ td a:hover {
 	td::before {
 		content: attr(data-label);
 		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 10px;
 		width: calc(50% - 20px);
 		white-space: nowrap;
