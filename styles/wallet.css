@@ -1,3 +1,8 @@
+table th:nth-child(n + 2),
+table td:nth-child(n + 2) {
+	text-align: right;
+}
+
 .total-balance {
 	font-size: 3rem;
 	font-weight: bold;
@@ -62,6 +67,7 @@ table a:hover {
 
 th,
 td {
+	width: 200px;
 	padding: 10px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
