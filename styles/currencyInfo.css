@@ -21,6 +21,10 @@
 	margin-bottom: 5px;
 }
 
+#currency-name {
+	text-align: center;
+}
+
 #currency-flag {
 	width: 50px;
 }
@@ -100,4 +104,15 @@
 	text-decoration: none;
 	color: #007bff;
 	text-align: center;
+}
+
+@media (max-width: 600px) {
+	.currency-forms {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#sellForm {
+		margin-top: 15px;
+	}
 }

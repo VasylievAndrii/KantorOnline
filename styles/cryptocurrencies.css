@@ -63,9 +63,23 @@
 	margin-top: 5px;
 }
 
-/* .main__cryptocurrency-price {
-} */
-
 .main__cryptocurrency-percentage-change {
 	font-size: 12px;
+}
+
+@media (max-width: 980px) {
+	.main__cryptocurrency-content-page {
+		align-items: center;
+		justify-content: center;
+	}
+
+	.main__cryptocurrency {
+		margin: 20px;
+	}
+}
+
+@media (max-width: 600px) {
+	.main__cryptocurrency {
+		margin: 10px;
+	}
 }

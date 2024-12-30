@@ -124,15 +124,15 @@ function createHtmlTable(data) {
 		const detailsLink = `currencyInfo.php?code=${code}`;
 
 		table += "<tr>";
-		table += `<td>
+		table += `<td data-label="Waluta">
 					<a href="${detailsLink}">
 						<img src="https://flagcdn.com/24x18/${code.slice(0, 2).toLowerCase()}.png" alt="${code}" />
 						<b>${code}</b>
 					PLN <img src="https://flagcdn.com/24x18/pl.png" alt="PLN" /></a>
 					</td>`;
-		table += `<td><a href="${detailsLink}">${fullName}</a></td>`;
-		table += `<td class="${trend}"><b>${newRate.toFixed(4)}</b> ${arrow}</td>`;
-		table += `<td><b>${(newRate * 1.02 + 0.0001).toFixed(4)}</b></td>`;
+		table += `<td data-label="Pełna Nazwa"><a href="${detailsLink}">${fullName}</a></td>`;
+		table += `<td data-label="Kupno" class="${trend}"><b>${newRate.toFixed(4)}</b> ${arrow}</td>`;
+		table += `<td data-label="Sprzedaż"><b>${(newRate * 1.02 + 0.0001).toFixed(4)}</b></td>`;
 		table += "</tr>";
 	});
 	table += "</tbody></table>";

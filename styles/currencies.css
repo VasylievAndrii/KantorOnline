@@ -24,6 +24,10 @@ th {
 	font-weight: bold;
 }
 
+tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
 tr:hover {
 	background-color: #f1f1f1;
 }
@@ -51,4 +55,65 @@ td a:hover {
 
 #kursyFiatTable {
 	margin-top: 15px;
+}
+
+@media (max-width: 700px) {
+	table,
+	thead,
+	tbody,
+	th,
+	td,
+	tr {
+		display: block;
+	}
+
+	td:nth-child(2),
+	th:nth-child(2) {
+		text-align: center;
+	}
+
+	thead tr {
+		display: none;
+	}
+
+	tr {
+		margin-bottom: 10px;
+	}
+
+	td {
+		text-align: center;
+		position: relative;
+	}
+
+	td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 10px;
+		width: calc(50% - 20px);
+		white-space: nowrap;
+		text-align: left;
+		font-weight: bold;
+	}
+}
+
+@media (max-width: 600px) {
+	table {
+		max-width: 400px;
+		margin: auto;
+	}
+
+	td {
+		text-align: right;
+	}
+
+	td:nth-child(2),
+	th:nth-child(2) {
+		text-align: right;
+	}
+}
+
+@media (max-width: 380px) {
+	td:nth-child(2) {
+		display: none;
+	}
 }

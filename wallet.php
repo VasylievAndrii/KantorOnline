@@ -41,10 +41,10 @@
                                 $total = $rate * $currency['amount'];
                             ?>
                             <tr>
-                                <td><a href="currencyInfo.php?code=<?= urlencode($currency['currency']) ?>"><?= htmlspecialchars($currency['currency']) ?></a></td>
-                                <td><?= number_format($rate, 4) ?></td>
-                                <td><?= htmlspecialchars($currency['amount']) ?></td>
-                                <td><?= number_format($total, 4) ?></td>
+                                <td data-label="Waluta"><a href="currencyInfo.php?code=<?= urlencode($currency['currency']) ?>"><?= htmlspecialchars($currency['currency']) ?></a></td>
+                                <td data-label="Sprzedaż"><?= number_format($rate, 4) ?></td>
+                                <td data-label="Ilość"><?= htmlspecialchars($currency['amount']) ?></td>
+                                <td data-label="Całkowity"><?= number_format($total, 4) ?> PLN</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -69,10 +69,10 @@
                                 $total = $rate * $crypto['amount'];
                             ?>
                             <tr>
-                                <td><a href="cryptocurrencyInfo.php?code=<?= urlencode($crypto['currency']) ?>"><?= htmlspecialchars($crypto['currency']) ?></a></td>
-                                <td><?= number_format($rate, 2) ?></td>
-                                <td><?= htmlspecialchars($crypto['amount']) ?></td>
-                                <td><?= number_format($total, 2) ?></td>
+                                <td data-label="Waluta"><a href="cryptocurrencyInfo.php?code=<?= urlencode($crypto['currency']) ?>"><?= htmlspecialchars($crypto['currency']) ?></a></td>
+                                <td data-label="Sprzedaż"><?= number_format($rate, 2) ?></td>
+                                <td data-label="Ilość"><?= htmlspecialchars($crypto['amount']) ?></td>
+                                <td data-label="Całkowity"><?= number_format($total, 2) ?> PLN</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

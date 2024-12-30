@@ -102,3 +102,14 @@
 	color: #007bff;
 	text-align: center;
 }
+
+@media (max-width: 600px) {
+	.crypto-forms {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#sellForm {
+		margin-top: 15px;
+	}
+}

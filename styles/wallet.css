@@ -106,3 +106,42 @@ tr {
 	outline: 2px solid #007bff;
 	outline-offset: 2px;
 }
+
+@media (max-width: 700px) {
+	table,
+	thead,
+	tbody,
+	th,
+	td,
+	tr {
+		display: block;
+	}
+
+	th,
+	td {
+		width: auto;
+	}
+
+	thead tr {
+		display: none;
+	}
+
+	tr {
+		margin-bottom: 10px;
+	}
+
+	td {
+		text-align: right;
+		position: relative;
+	}
+
+	td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 10px;
+		width: calc(50% - 20px);
+		white-space: nowrap;
+		text-align: left;
+		font-weight: bold;
+	}
+}
