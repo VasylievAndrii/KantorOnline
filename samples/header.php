@@ -37,6 +37,7 @@ if ($isAuthenticated) {
 					<li class="nav__item">
 						<div class="user-menu">
 							<a href="#" class="nav__link nav__link--login logout-btn" onclick="toggleMenu(event)">
+								<i class="fas fa-user"></i>
 								<?php echo htmlspecialchars($_SESSION['username']) . " (" . number_format($balance, 2) . "PLN)"; ?>
 							</a>
 							<div class="dropdown-menu" id="userDropdown">

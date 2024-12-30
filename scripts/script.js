@@ -18,6 +18,7 @@ navItemEls.forEach(navItemEl => {
 // header - user menu
 function toggleMenu(event) {
 	event.preventDefault();
+	event.stopPropagation();
 	const dropdown = document.getElementById("userDropdown");
 	dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 }
@@ -92,3 +93,12 @@ function handleModalTransaction(event, action) {
 
 	closeModal();
 }
+
+const dropdownItems = document.querySelectorAll("#userDropdown .dropdown-item");
+
+dropdownItems.forEach(item => {
+	item.addEventListener("click", function () {
+		const dropdown = document.getElementById("userDropdown");
+		dropdown.style.display = "none";
+	});
+});

@@ -10,6 +10,7 @@
         <title>User Wallet</title>
         <link rel="stylesheet" href="styles/styles.css" />
         <link rel="stylesheet" href="styles/wallet.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     </head>
     <body>
         <?php include('samples/header.php'); ?>
