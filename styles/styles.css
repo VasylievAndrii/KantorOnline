@@ -145,11 +145,6 @@ ul {
 	background-color: #0d1754;
 }
 
-/* .logout-btn:focus {
-	outline: 2px solid #f1c40f;
-	outline-offset: 2px;
-} */
-
 .hamburger {
 	display: none;
 	cursor: pointer;
@@ -317,6 +312,7 @@ form input {
 	border-radius: 5px;
 	font-size: 14px;
 	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
 .primary-button:hover {
