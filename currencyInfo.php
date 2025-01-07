@@ -12,36 +12,38 @@
 <body>
   <?php include('samples/header.php'); ?>
 
-  <main class="main main--currency-info">
-    <div class="container">
-      <h1 id="currency-name"></h1>
-      <img id="currency-flag" alt="Flaga waluty">
-    </div>
-    <p><b>Kod waluty:</b> <span id="currency-code"></span></p>
-    <p><b>Kurs kupna:</b> <span id="currency-rate"></span> PLN</p>
-    <p><b>Kurs sprzedaży:</b> <span id="currency-sell-rate"></span> PLN</p>
-    <p><b>Opis:</b> <span id="currency-description"></span></p>
-    <div class="currency-forms">
-      <form id="buyForm" class="form">
-        <label for="amount">
-          <i class="fas fa-shopping-cart"></i> Kwota do zakupu:
-        </label>
-        <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
-        <button type="submit" class="btn btn-buy">Kup teraz</button>
-      </form>
+  <main class="main">
+    <section class="main--currency-info">   
+      <div class="container">
+        <h1 id="currency-name"></h1>
+        <img id="currency-flag" alt="Flaga waluty">
+      </div>
+      <p><b>Kod waluty:</b> <span id="currency-code"></span></p>
+      <p><b>Kurs kupna:</b> <span id="currency-rate"></span> PLN</p>
+      <p><b>Kurs sprzedaży:</b> <span id="currency-sell-rate"></span> PLN</p>
+      <p><b>Opis:</b> <span id="currency-description"></span></p>
+      <div class="currency-forms">
+        <form id="buyForm" class="form">
+          <label for="amount">
+            <i class="fas fa-shopping-cart"></i> Kwota do zakupu:
+          </label>
+          <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
+          <button type="submit" class="btn btn-buy">Kup teraz</button>
+        </form>
 
-      <form id="sellForm" class="form">
-        <label for="sellAmount">
-          <i class="fas fa-coins"></i> Kwota do sprzedania:
-        </label>
-        <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
-        <button type="submit" class="btn btn-sell">Sprzedać</button>
-      </form>
-    </div>
-    <p id="buyResult" class="buy-result notification hidden"></p>
-    <p id="sellResult" class="sell-result notification hidden"></p>
-    <canvas id="currencyChart"></canvas>
-    <a class="back" href="currencies.php">Wróć do strony walut</a>
+        <form id="sellForm" class="form">
+          <label for="sellAmount">
+            <i class="fas fa-coins"></i> Kwota do sprzedania:
+          </label>
+          <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
+          <button type="submit" class="btn btn-sell">Sprzedać</button>
+        </form>
+      </div>
+      <p id="buyResult" class="buy-result notification hidden"></p>
+      <p id="sellResult" class="sell-result notification hidden"></p>
+      <canvas id="currencyChart"></canvas>
+      <a class="back" href="currencies.php">Wróć do strony walut</a>
+    </section>
   </main>
 
   <?php include('samples/footer.php'); ?>

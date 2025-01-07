@@ -11,9 +11,11 @@
 	<body>
 		<?php include('samples/header.php'); ?>
 		
-		<main class="main main--cryptocurrency_page">
-      <h1 class="main__heading">Kryptowaluty</h1>
-      <div class="main__cryptocurrency-content-page"></div>	 
+		<main class="main">
+			<section class="main--cryptocurrency_page">
+				<h1 class="main__heading">Kryptowaluty</h1>
+				<div class="main__cryptocurrency-content-page"></div>	 
+			</section>
     </main>
 
 		<?php include('samples/footer.php'); ?>

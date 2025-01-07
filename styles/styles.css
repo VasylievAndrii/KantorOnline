@@ -322,8 +322,6 @@ form input {
 
 /* main */
 .main {
-	display: flex;
-	justify-content: center;
 	flex: 1;
 	max-width: 1000px;
 	width: 100%;

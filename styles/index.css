@@ -1,15 +1,80 @@
 .main__showcase {
 	display: flex;
-	justify-content: space-evenly;
-	/* gap: 20px; */
+	justify-content: center;
+	gap: 20px;
 }
 
 .main__showcase-page {
+	min-height: 500px;
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 	padding: 40px;
-	width: 450px;
+	min-width: 450px;
+	max-width: 600px;
+}
+
+#btc-data,
+#usd-data {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.main__showcase-page p {
+	margin-bottom: 5px;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+	margin: 20px 0;
+}
+
+#btc-logo {
+	width: 40px;
+	height: 40px;
+}
+
+#usd-flag {
+	width: 50px;
+}
+
+.buttons-container {
+	margin-top: auto;
+	justify-content: center;
+	display: flex;
+	gap: 10px;
+}
+
+.btn {
+	margin-top: 7px;
+	padding: 10px 20px;
+	width: 300px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+	background-color: #007bff;
+}
+
+.btn-primary:hover {
+	background-color: #0056b3;
+}
+
+.btn-secondary {
+	background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+	background-color: #5a6268;
 }
 
 @media (max-width: 930px) {
@@ -21,6 +86,12 @@
 	}
 
 	.main__showcase-page {
-		height: 70vh;
+		width: 500px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.main {
+		max-width: none;
 	}
 }

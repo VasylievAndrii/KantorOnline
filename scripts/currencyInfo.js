@@ -195,10 +195,6 @@ fetch(`./databases/fiat_history.php?code=${currencyCode}`)
 			y: parseFloat(item.rate),
 		}));
 
-		const gradientHistory = ctx.createLinearGradient(0, 0, 0, 400);
-		gradientHistory.addColorStop(0, "#34A853");
-		gradientHistory.addColorStop(1, "rgba(0, 255, 0, 0)");
-
 		new Chart(ctx, {
 			type: "line",
 			data: {
@@ -206,11 +202,10 @@ fetch(`./databases/fiat_history.php?code=${currencyCode}`)
 					{
 						label: "Historia (ostatni tydzień)",
 						data: historyData,
-						borderColor: "#34A853",
-						backgroundColor: gradientHistory,
+						borderColor: "#FF9900",
+						backgroundColor: "rgba(255, 153, 0, 0.2)",
 						fill: true,
-						tension: 0,
-						pointRadius: 0,
+						tension: 0.4,
 					},
 				],
 			},

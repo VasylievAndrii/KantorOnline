@@ -179,14 +179,6 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 			y: parseFloat(item.rate) * usdToPlnRate,
 		}));
 
-		const gradientHistory = ctx.createLinearGradient(0, 0, 0, 400);
-		gradientHistory.addColorStop(0, "#34A853");
-		gradientHistory.addColorStop(1, "rgba(52, 168, 83, 0.2)");
-
-		const gradientPrediction = ctx.createLinearGradient(0, 0, 0, 400);
-		gradientPrediction.addColorStop(0, "rgba(0, 0, 255, 0.4)");
-		gradientPrediction.addColorStop(1, "rgba(66, 133, 244, 0.2)");
-
 		new Chart(ctx, {
 			type: "line",
 			data: {
@@ -195,7 +187,7 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 						label: "Historia (ostatni tydzień)",
 						data: historyData,
 						borderColor: "#34A853",
-						backgroundColor: gradientHistory,
+						backgroundColor: "rgba(52, 168, 83, 0.2)",
 						fill: true,
 						tension: 0.4,
 						pointRadius: 1,
@@ -205,7 +197,7 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 						label: "Predykcja",
 						data: predictionData,
 						borderColor: "rgba(0, 0, 255, 1)",
-						backgroundColor: gradientPrediction,
+						backgroundColor: "rgba(66, 133, 244, 0.2)",
 						fill: true,
 						tension: 0.4,
 						pointRadius: 1,

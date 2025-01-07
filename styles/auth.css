@@ -1,4 +1,10 @@
 /* main registration form */
+
+section {
+	display: flex;
+	justify-content: center;
+}
+
 .main__auth-form-page {
 	background-color: white;
 	border-radius: 10px;

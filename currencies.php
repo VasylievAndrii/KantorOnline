@@ -12,9 +12,11 @@
 <body>
   <?php include('samples/header.php'); ?>
 
-  <main class="main main--kursy_fiat">
-    <h1 class="main__heading">Kursy walut</h1>
-    <div id="kursyFiatTable"></div>
+  <main class="main">
+    <section class="main--kursy_fiat">   
+      <h1 class="main__heading">Kursy walut</h1>
+      <div id="kursyFiatTable"></div>
+    </section>
   </main>
 
   <?php include('samples/footer.php'); ?>
