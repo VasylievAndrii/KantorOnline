@@ -12,12 +12,12 @@
   $history_usd = mysqli_fetch_all($result_history_usd, MYSQLI_ASSOC);
 
   $query_history_btc = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM btc_usd_historyczne 
-                        WHERE data >= DATE_SUB('2024-12-03', INTERVAL 1 DAY)";
+                        WHERE data >= DATE_SUB(NOW() , INTERVAL 3 DAY)";
   $result_history_btc = mysqli_query($conn, $query_history_btc);
   $history_btc = mysqli_fetch_all($result_history_btc, MYSQLI_ASSOC);
 
   $query_prediction_btc = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM btc_usd_predykcja 
-                          WHERE data >= DATE_SUB('2024-12-03', INTERVAL 1 DAY)";
+                          WHERE data >= DATE_SUB(NOW(), INTERVAL 3 DAY)";
   $result_prediction_btc = mysqli_query($conn, $query_prediction_btc);
   $prediction_btc = mysqli_fetch_all($result_prediction_btc, MYSQLI_ASSOC);
 

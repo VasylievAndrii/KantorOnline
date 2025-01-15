@@ -143,9 +143,18 @@ fetch("./databases/fetch_BTC_USD_data.php")
 				scales: {
 					x: {
 						type: "time",
-						time: { unit: "day", tooltipFormat: "yyyy-MM-dd HH:mm" },
+						time: {
+							unit: "day",
+							tooltipFormat: "yyyy-MM-dd HH:mm",
+							displayFormats: { hour: "HH:mm" },
+						},
+						title: { display: true, text: "Data i godzina" },
+						grid: { color: "rgba(0, 0, 0, 0.1)" },
 					},
-					y: { title: { display: true, text: "Kurs PLN" } },
+					y: {
+						title: { display: true, text: "Kurs PLN" },
+						grid: { color: "rgba(0, 0, 0, 0.1)" },
+					},
 				},
 			},
 		});

@@ -42,6 +42,11 @@
 	width: 50px;
 }
 
+#btc-chart,
+#usd-chart {
+	margin-top: auto;
+}
+
 .buttons-container {
 	margin-top: auto;
 	justify-content: center;
