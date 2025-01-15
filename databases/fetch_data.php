@@ -10,11 +10,11 @@ $result_usd_to_pln = mysqli_query($conn, $query_usd_to_pln);
 $usd_to_pln = mysqli_fetch_assoc($result_usd_to_pln)['rate'];
 
 if ($code) {
-    $query_history = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM {$code}_usd_historyczne WHERE data >= DATE_SUB(NOW() , INTERVAL 1 WEEK);"; 
+    $query_history = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM {$code}_usd_historyczne WHERE data >= DATE_SUB(NOW() , INTERVAL 2 DAY);"; 
     $result_history = mysqli_query($conn, $query_history);
     $history = mysqli_fetch_all($result_history, MYSQLI_ASSOC);
 
-    $query_prediction = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM {$code}_usd_predykcja WHERE data >= DATE_SUB(NOW() , INTERVAL 1 WEEK)";
+    $query_prediction = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM {$code}_usd_predykcja WHERE data >= DATE_SUB(NOW() , INTERVAL 2 DAY)";
     $result_prediction = mysqli_query($conn, $query_prediction);
     $prediction = mysqli_fetch_all($result_prediction, MYSQLI_ASSOC);
 

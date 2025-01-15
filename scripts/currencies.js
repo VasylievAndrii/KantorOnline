@@ -123,6 +123,10 @@ function createHtmlTable(data) {
 
 		const detailsLink = `currencyInfo.php?code=${code}`;
 
+		if (code === "XDR") {
+			return;
+		}
+
 		table += "<tr>";
 		table += `<td data-label="Waluta">
 					<a href="${detailsLink}">

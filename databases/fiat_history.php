@@ -10,7 +10,7 @@
   $code = isset($_GET['code']) ? strtoupper($_GET['code']) : null;
 
   if ($code) {
-    $query_fiat_history = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM kursy_fiat_historyczne WHERE code = '{$code}' AND data >= DATE_SUB('2024-12-19', INTERVAL 1 week)"; //'2024-12-19' => 22CURDATE() 
+    $query_fiat_history = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM kursy_fiat_historyczne WHERE code = '{$code}' AND data >= DATE_SUB(NOW(), INTERVAL 1 week)";
 
     $result_fiat_history = mysqli_query($conn, $query_fiat_history);
     $fiat_history = mysqli_fetch_all($result_fiat_history, MYSQLI_ASSOC);
