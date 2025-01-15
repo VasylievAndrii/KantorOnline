@@ -7,7 +7,7 @@
   $usd_to_pln = mysqli_fetch_assoc($result_usd_to_pln)['rate'];
 
   $query_history_usd = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM kursy_fiat_historyczne 
-                        WHERE code = 'USD' AND data >= DATE_SUB(NOW(), INTERVAL 2 DAY)";
+                        WHERE code = 'USD' AND data >= DATE_SUB(NOW(), INTERVAL 1 week)";
   $result_history_usd = mysqli_query($conn, $query_history_usd);
   $history_usd = mysqli_fetch_all($result_history_usd, MYSQLI_ASSOC);
 
