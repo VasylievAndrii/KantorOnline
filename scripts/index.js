@@ -117,7 +117,7 @@ fetch("./databases/fetch_BTC_USD_data.php")
 			data: {
 				datasets: [
 					{
-						label: "Historia USD (PLN)",
+						label: "Historia (PLN)",
 						data: usdHistoryData,
 						borderColor: "#FF9900",
 						backgroundColor: "rgba(255, 153, 0, 0.2)",
