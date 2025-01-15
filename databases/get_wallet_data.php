@@ -25,7 +25,7 @@
     $currenciesList = ["USD", "EUR", "GBP", "JPY", "PLN", "CHF", "AUD", "CAD", "SEK", "NOK", "DKK", "CZK", "HUF", "RUB", "CNY", "INR", "MXN", "BRL", "ZAR", "SGD", "HKD", "NZD", "TRY", "KRW", "MYR", "IDR", "THB", "SAR", "AED", "ILS", "ARS", "CLP", "PEN", "COP", "VND", "PKR", "BGN", "PHP", "RON", "ISK", "UAH", "XDR"];
     $cryptocurrenciesList = ["BTC", "ETH", "LTC", "XRP", "BCH"];
 
-    $query_usd_to_pln = "SELECT rate FROM kursy_fiat WHERE code = 'USD' ORDER BY data DESC, czas DESC LIMIT 1";
+    $query_usd_to_pln = "SELECT rate FROM kursy_fiat_historyczne WHERE code = 'USD' ORDER BY data DESC, czas DESC LIMIT 1";
     $result_usd = $conn_rates->query($query_usd_to_pln);
 
     if ($result_usd->num_rows > 0) {
@@ -49,7 +49,7 @@
     }
 
     $currencyRates = [];
-    $query_fiat = "SELECT code, rate FROM kursy_fiat ORDER BY data DESC, czas DESC LIMIT 33";
+    $query_fiat = "SELECT code, rate FROM kursy_fiat_historyczne ORDER BY data DESC, czas DESC LIMIT 33";
     $result_fiat = $conn_rates->query($query_fiat);
 
     if ($result_fiat->num_rows > 0) {

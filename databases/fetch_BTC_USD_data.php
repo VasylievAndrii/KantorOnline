@@ -2,12 +2,12 @@
   include('kryptowaluty.php'); 
 
   header('Content-Type: application/json');
-  $query_usd_to_pln = "SELECT rate FROM kursy_fiat WHERE code = 'USD' ORDER BY data DESC, czas DESC LIMIT 1";
+  $query_usd_to_pln = "SELECT rate FROM kursy_fiat_historyczne WHERE code = 'USD' ORDER BY data DESC, czas DESC LIMIT 1";
   $result_usd_to_pln = mysqli_query($conn, $query_usd_to_pln);
   $usd_to_pln = mysqli_fetch_assoc($result_usd_to_pln)['rate'];
 
   $query_history_usd = "SELECT CONCAT(data, ' ', czas) AS datetime, rate FROM kursy_fiat_historyczne 
-                        WHERE code = 'USD' AND data >= DATE_SUB('2024-12-19', INTERVAL 2 DAY)";
+                        WHERE code = 'USD' AND data >= DATE_SUB(NOW(), INTERVAL 2 DAY)";
   $result_history_usd = mysqli_query($conn, $query_history_usd);
   $history_usd = mysqli_fetch_all($result_history_usd, MYSQLI_ASSOC);
 

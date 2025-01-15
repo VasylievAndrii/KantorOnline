@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 $code = isset($_GET['code']) ? strtoupper($_GET['code']) : null;
 
-$query_usd_to_pln = "SELECT rate FROM kursy_fiat WHERE code = 'USD' ORDER BY data DESC, czas DESC LIMIT 1";
+$query_usd_to_pln = "SELECT rate FROM kursy_fiat_historyczne WHERE code = 'USD' ORDER BY data DESC, czas DESC LIMIT 1";
 $result_usd_to_pln = mysqli_query($conn, $query_usd_to_pln);
 $usd_to_pln = mysqli_fetch_assoc($result_usd_to_pln)['rate'];
 
@@ -27,7 +27,7 @@ if ($code) {
     mysqli_free_result($result_history);
     mysqli_free_result($result_prediction);
 } else {
-    $request_fiat = mysqli_query($conn, 'SELECT * FROM kursy_fiat ORDER BY data DESC, czas DESC LIMIT 66');
+    $request_fiat = mysqli_query($conn, 'SELECT * FROM kursy_fiat_historyczne ORDER BY data DESC, czas DESC LIMIT 66');
     $kursy_fiat = mysqli_fetch_all($request_fiat, MYSQLI_ASSOC);
 
     $request_krypto = mysqli_query($conn, 'SELECT * FROM kursy_krypto ORDER BY data DESC, czas DESC LIMIT 10');
