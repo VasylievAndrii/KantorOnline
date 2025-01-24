@@ -1,8 +1,4 @@
-<?php
-    require_once "databases/get_wallet_data.php";
-?>
-
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -13,7 +9,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     </head>
     <body>
-        <?php include('samples/header.php'); ?>
+        <?php 
+            include('samples/header.php');
+            require_once "databases/get_wallet_data.php"; 
+        ?>
 
         <main class="main">
             <section class="main--wallet">

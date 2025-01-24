@@ -184,7 +184,7 @@ fetch(`./databases/fetch_data.php?code=${cryptoCode}`)
 			data: {
 				datasets: [
 					{
-						label: "Historia (ostatni tydzień)",
+						label: "Historia (PLN)",
 						data: historyData,
 						borderColor: "#34A853",
 						backgroundColor: "rgba(52, 168, 83, 0.2)",

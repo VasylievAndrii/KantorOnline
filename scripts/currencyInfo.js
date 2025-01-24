@@ -200,7 +200,7 @@ fetch(`./databases/fiat_history.php?code=${currencyCode}`)
 			data: {
 				datasets: [
 					{
-						label: "Historia (ostatni tydzień)",
+						label: "Historia (PLN)",
 						data: historyData,
 						borderColor: "#FF9900",
 						backgroundColor: "rgba(255, 153, 0, 0.2)",
