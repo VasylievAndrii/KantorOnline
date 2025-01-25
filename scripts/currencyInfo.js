@@ -70,7 +70,7 @@ fetch("./databases/fetch_data.php")
 			document.title = `Kurs ${currencyDetail.name}`;
 
 			const rate = parseFloat(currencyData.rate);
-			const sellRate = (rate * 1.02 + 0.0001).toFixed(4);
+			const sellRate = (rate * 1.02 + 0.0001).toFixed(2);
 
 			document.getElementById(
 				"currency-name"
@@ -79,7 +79,7 @@ fetch("./databases/fetch_data.php")
 				.slice(0, 2)
 				.toLowerCase()}.png`;
 			document.getElementById("currency-code").textContent = currencyCode;
-			document.getElementById("currency-rate").textContent = rate.toFixed(4);
+			document.getElementById("currency-rate").textContent = rate.toFixed(2);
 			document.getElementById("currency-sell-rate").textContent = sellRate;
 			document.getElementById("currency-description").textContent = currencyDetail.description;
 		} else {

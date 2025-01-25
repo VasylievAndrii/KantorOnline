@@ -33,13 +33,13 @@
 								$errors[] = "Adres e-mail jest nieprawidłowy";
 							}
 							if (strlen($password) < 8) {
-								$errors[] = "Hasło musi mieć co najmniej 8 znaków";
+								$errors[] = "Hasło musi mieć przynajmniej 8 znaków";
 							}
 							if ($password !== $passwordRepeat) {
 								$errors[] = "Hasła nie pasują";
 							}
 							if (!preg_match("/[A-Z]/", $password)) {
-								$errors[] = "Hasło musi zawierać co najmniej jedną wielką literę";
+								$errors[] = "Hasło musi zawierać przynajmniej jedną wielką literę";
 							}
 							if (!preg_match("/[0-9]/", $password)) {
 								$errors[] = "Hasło musi zawierać przynajmniej jedną cyfrę";
@@ -106,13 +106,13 @@
 						<div class="main__auth-form-group">
 							<label for="password" class="main__auth-label">Hasło:</label>
 							<input class="main__auth-input" type="password" id="password" name="password" placeholder="Hasło" required>
-							<small class="main__registration-criteria">Hasło musi mieć co najmniej 8 znaków, zawierać litery i cyfry oraz zaczynać się od litery</small>
+							<small class="main__registration-criteria">Hasło musi zawierać przynajmniej 8 znaków, litery, cyfry i znak specjalny</small>
 						</div>
 						<div class="main__auth-form-group">
 							<label for="repeat_password" class="main__auth-label">Potwierdzenie hasła:</label>
 							<input class="main__auth-input" type="password" id="repeat_password" name="repeat_password" placeholder="Potwierdzenie hasła" required>
 						</div>
-						<button class="main__auth-btn" type="submit" name="submit">Zarejestrować się</button>
+						<button class="main__auth-btn" type="submit" name="submit">Zarejestruj się</button>
 					</form>
 					<p class="main__auth-suggest">Masz już konto? <a href="login.php" class="main__auth-suggest-link">Zaloguj się!</a></p>
 				</div>

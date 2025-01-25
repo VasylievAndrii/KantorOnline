@@ -36,7 +36,7 @@
             <i class="fas fa-coins"></i> Kwota do sprzedania:
           </label>
           <input type="number" id="sellAmount" name="sellAmount" min="0.0001" step="0.0001" required>
-          <button type="submit" class="btn btn-sell">Sprzedać</button>
+          <button type="submit" class="btn btn-sell">Sprzedaj</button>
         </form>
       </div>
       <p id="buyResult" class="buy-result notification hidden"></p>
