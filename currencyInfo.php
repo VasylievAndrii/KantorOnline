@@ -27,7 +27,7 @@
           <label for="amount">
             <i class="fas fa-shopping-cart"></i> Kwota do zakupu:
           </label>
-          <input type="number" id="amount" name="amount" min="0.0001" step="0.01" required>
+          <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
           <button type="submit" class="btn btn-buy">Kup teraz</button>
         </form>
 
@@ -35,7 +35,7 @@
           <label for="sellAmount">
             <i class="fas fa-coins"></i> Kwota do sprzedania:
           </label>
-          <input type="number" id="sellAmount" name="sellAmount" min="0.0001" step="0.01" required>
+          <input type="number" id="sellAmount" name="sellAmount" min="0.01" step="0.01" required>
           <button type="submit" class="btn btn-sell">Sprzedaj</button>
         </form>
       </div>
